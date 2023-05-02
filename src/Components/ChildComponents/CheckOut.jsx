@@ -8,17 +8,10 @@ import { BaseURL } from "../../Helper/config";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { toast } from "react-hot-toast";
-import { PaymentElement } from "@stripe/react-stripe-js";
-import {
-  PayPalScriptProvider,
-  PayPalHostedFieldsProvider,
-  PayPalHostedField,
-  usePayPalHostedFields,
-} from "@paypal/react-paypal-js";
-
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 const CheckOut = () => {
+  let subtotal = 0;
   const stripePromise = loadStripe("pk_test_TYooMQauvdEDq54NiTphI7jx");
   const location = useLocation();
   let [cart, setCart] = useState([]);
@@ -26,18 +19,31 @@ const CheckOut = () => {
   const UserDetails = JSON.parse(localStorage.getItem("UserDetails"));
   let Token = getToken();
   useEffect(() => {
-    setCart(
-      localStorage.getItem("checkOut")
-        ? JSON.parse(localStorage.getItem("cartList"))
-        : []
-    );
+    // setCart(
+    //   localStorage.getItem("checkOut")
+    //     ? JSON.parse(localStorage.getItem("cartList"))
+    //     : []
+    // );
+
+    fetch(`${BaseURL}/get-single-cart-by-user/${UserDetails._id}`)
+      .then((res) => res.json())
+      .then((data) => setCart(data.data[0]?.cartData[0]?.cartItem));
+    for (let i = 0; i < cart?.length; i++) {
+      console.log(cart[i]);
+      subtotal = subtotal + parseFloat(cart[i]?.foodPrice) * cart[i]?.foodQty;
+    }
   }, []);
-  console.log(1);
-  var subtotal = 0;
+  if (cart) {
+    console.log(cart);
+    // console.log(cart?.data[0]);
+    // console.log(cart?.data[0].cartData[0]);
+    // console.log(cart?.data[0]?.cartData[0]?.cartItem);
+  }
+  //cart[i].foodQty;
   // for (var i = 0; i < cart.length; i++) {
   //   subtotal = subtotal + parseFloat(cart[i]?.foodPrice);
   // }
-
+  console.log(subtotal);
   let deliveryFee = 50;
   let smallOrderFee = 20;
   let taxesFee = 15;
@@ -85,16 +91,16 @@ const CheckOut = () => {
     }
   };
 
-  const hostedFields = usePayPalHostedFields();
-  const options = {
-    // passing the client secret obtained from the server
-    clientSecret: "{{CLIENT_SECRET}}",
-  };
-  const paypal = () => {
-    <Elements stripe={stripePromise} options={options}>
-      <PaymentElement />
-    </Elements>;
-  };
+  // const hostedFields = usePayPalHostedFields();
+  // const options = {
+  //   // passing the client secret obtained from the server
+  //   clientSecret: "{{CLIENT_SECRET}}",
+  // };
+  // const paypal = () => {
+  //   <Elements stripe={stripePromise} options={options}>
+  //     <PaymentElement />
+  //   </Elements>;
+  // };
 
   return (
     <section className='checkOut'>
@@ -145,7 +151,7 @@ const CheckOut = () => {
                           </option>
                         </select>
                       </button>
-                      <button onClick={paypal}>Paypal</button>
+                      <button>Paypal</button>
                       <form>
                         <button>Submit</button>
                       </form>

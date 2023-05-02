@@ -41,7 +41,7 @@ import {
   decreaseItem,
   removeItem,
 } from "../../Redux/State-slice/CartSlice";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Uber_image } from "../../Database/ImgData";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-hot-toast";
@@ -175,7 +175,8 @@ const Header = () => {
     //localStorage.setItem("checkOut", JSON.stringify({ cart, total }));
   };
   useEffect(() => {}, []);
-
+  const location = useLocation();
+  console.log(location);
   return (
     <header className='Header shadow'>
       {/* ================== Nav Section ================== */}
@@ -387,16 +388,21 @@ const Header = () => {
                         </Link>
                       </div>
                     )}
-                    <button
-                      className='header-widget header-cart '
-                      title='Cartlist'
-                      onClick={() => {
-                        setState({ isPaneOpen: true });
-                      }}
-                    >
-                      <i className='fas fa-shopping-basket'></i>
-                      <sup>{cart?.length}</sup>
-                    </button>
+                    {location.pathname !== "/CheckOut" ? (
+                      <>
+                        {" "}
+                        <button
+                          className='header-widget header-cart '
+                          title='Cartlist'
+                          onClick={() => {
+                            setState({ isPaneOpen: true });
+                          }}
+                        >
+                          <i className='fas fa-shopping-basket'></i>
+                          <sup>{cart?.length}</sup>
+                        </button>
+                      </>
+                    ) : null}
 
                     <div>
                       {/* <Link to={"/CustomerRegistration"}>
@@ -590,6 +596,7 @@ const Header = () => {
                 <i className='fas fa-shopping-basket'></i>
                 <span>total item ({cart?.length})</span>
               </div>
+
               <button
                 className='cart-close'
                 onClick={() => {
