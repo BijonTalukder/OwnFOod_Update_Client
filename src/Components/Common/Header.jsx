@@ -147,7 +147,9 @@ const Header = () => {
 
   const User = JSON.parse(localStorage.getItem("UserDetails"));
   const handleLogout = () => {
-    localStorage.clear();
+    // localStorage.clear();
+
+    localStorage.removeItem("UserDetails");
     window.location.reload(false);
   };
 
@@ -160,11 +162,11 @@ const Header = () => {
   useEffect(() => {
     localStorage.setItem("cartList", JSON.stringify(cart));
   }, [cart]);
-  console.log(User);
+  console.log(User._id);
   const checkOut = async () => {
     if (User) {
       console.log("from user");
-      fetch("http://localhost:5000/api/v1/create-cart-items", {
+      await fetch("http://localhost:5000/api/v1/create-cart-items", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ customerID: User._id, cartItem: cart }),
@@ -174,9 +176,9 @@ const Header = () => {
     }
     //localStorage.setItem("checkOut", JSON.stringify({ cart, total }));
   };
-  useEffect(() => {}, []);
+  // useEffect(() => {}, []);
   const location = useLocation();
-  console.log(location);
+  // console.log(location);
   return (
     <header className='Header shadow'>
       {/* ================== Nav Section ================== */}

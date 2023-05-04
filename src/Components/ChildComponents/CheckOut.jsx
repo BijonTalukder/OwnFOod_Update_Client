@@ -15,24 +15,23 @@ const CheckOut = () => {
   const stripePromise = loadStripe("pk_test_TYooMQauvdEDq54NiTphI7jx");
   const location = useLocation();
   let [cart, setCart] = useState([]);
+  let [subTotal, setSubTotal] = useState(0);
 
   let navigate = useNavigate();
   const UserDetails = JSON.parse(localStorage.getItem("UserDetails"));
   let Token = getToken();
   useEffect(() => {
-    // setCart(
-    //   localStorage.getItem("checkOut")
-    //     ? JSON.parse(localStorage.getItem("cartList"))
-    //     : []
-    // );
-
+    setCart(
+      localStorage.getItem("checkOut")
+        ? JSON.parse(localStorage.getItem("cartList"))
+        : []
+    );
     fetch(`${BaseURL}/get-single-cart-by-user/${UserDetails._id}`)
       .then((res) => res.json())
-      .then((data) => setCart(data.data[0]?.cartData[0]?.cartItem));
-    for (let i = 0; i < cart?.length; i++) {
-      console.log(cart[i]);
-      subtotal = subtotal + parseFloat(cart[i]?.foodPrice) * cart[i]?.foodQty;
-    }
+      .then((data) => {
+        setCart(data.data[0]?.cartData[0]?.cartItem);
+        setSubTotal(data.data[0]?.cartData[0]?.foodTotalPrice);
+      });
   }, []);
   if (cart) {
     console.log(cart);
@@ -56,7 +55,7 @@ const CheckOut = () => {
       postBody.orderDeliveryAddressID = "63e8c354f4e215d144fe500a";
       postBody.orderBillingAddressID = "63e8c354f4e215d144fe500a";
       postBody.orderStatusID = "63e760ba7dfb72bf9f7d3083";
-      postBody.customerID = UserDetails._id;
+      // postBody.customerID = UserDetails._id;
       postBody.sellerID = "6427d85e4916b8f65ca9a092";
       postBody.orderNumber = "12";
       postBody.OrderLabel = "PREORDER";
@@ -206,7 +205,7 @@ const CheckOut = () => {
                   <div className='order-intro-list'>
                     <ul>
                       <li>
-                        <span>Subtotal:</span> <span>${subtotal}</span>
+                        <span>Subtotal:</span> <span>${subTotal}</span>
                       </li>
                       <li>
                         <span>Delivery Fee:</span> <span>${deliveryFee}</span>
