@@ -15,6 +15,7 @@ const CheckOut = () => {
   const stripePromise = loadStripe("pk_test_TYooMQauvdEDq54NiTphI7jx");
   const location = useLocation();
   let [cart, setCart] = useState([]);
+
   let navigate = useNavigate();
   const UserDetails = JSON.parse(localStorage.getItem("UserDetails"));
   let Token = getToken();
