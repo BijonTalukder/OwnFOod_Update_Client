@@ -1,18 +1,19 @@
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import { getToken } from "../../Helper/SessionHelper";
 import axios from "axios";
 import { BaseURL } from "../../Helper/config";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { toast } from "react-hot-toast";
-import { Elements } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
+import { AiOutlinePlus } from "react-icons/ai";
+import ModalCheckOut from "../Modal/ModalCheckOut";
+
 const CheckOut = () => {
+  const [modalShow, setModalShow] = React.useState(false);
   let subtotal = 0;
-  const stripePromise = loadStripe("pk_test_TYooMQauvdEDq54NiTphI7jx");
   const location = useLocation();
   let [cart, setCart] = useState([]);
   let [subTotal, setSubTotal] = useState(0);
@@ -26,23 +27,28 @@ const CheckOut = () => {
         ? JSON.parse(localStorage.getItem("cartList"))
         : []
     );
-    fetch(`${BaseURL}/get-single-cart-by-user/${UserDetails._id}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setCart(data.data[0]?.cartData[0]?.cartItem);
-        setSubTotal(data.data[0]?.cartData[0]?.foodTotalPrice);
-      });
+
+    const fetchData = async () => {
+      const res = await fetch(
+        `${BaseURL}/get-single-cart-by-user/${UserDetails?._id}`
+      );
+      // convert the data to json
+      const data = await res.json();
+      setCart(data.data[0]?.cartData[0]?.cartItem);
+      setSubTotal(data.data[0]?.cartData[0]?.foodTotalPrice);
+    };
+
+    // call the function
+    fetchData();
+    //   // make sure to catch any error
+    //   .catch(console.error);
+    // fetch(`${BaseURL}/get-single-cart-by-user/${UserDetails?._id}`)
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     // setCart(data.data[0]?.cartData[0]?.cartItem);
+    //     //setSubTotal(data.data[0]?.cartData[0]?.foodTotalPrice);
+    //   });
   }, []);
-  if (cart) {
-    console.log(cart);
-    // console.log(cart?.data[0]);
-    // console.log(cart?.data[0].cartData[0]);
-    // console.log(cart?.data[0]?.cartData[0]?.cartItem);
-  }
-  //cart[i].foodQty;
-  // for (var i = 0; i < cart.length; i++) {
-  //   subtotal = subtotal + parseFloat(cart[i]?.foodPrice);
-  // }
   console.log(subtotal);
   let deliveryFee = 50;
   let smallOrderFee = 20;
@@ -55,7 +61,7 @@ const CheckOut = () => {
       postBody.orderDeliveryAddressID = "63e8c354f4e215d144fe500a";
       postBody.orderBillingAddressID = "63e8c354f4e215d144fe500a";
       postBody.orderStatusID = "63e760ba7dfb72bf9f7d3083";
-      // postBody.customerID = UserDetails._id;
+      postBody.customerID = UserDetails?._id;
       postBody.sellerID = "6427d85e4916b8f65ca9a092";
       postBody.orderNumber = "12";
       postBody.OrderLabel = "PREORDER";
@@ -103,162 +109,177 @@ const CheckOut = () => {
   // };
 
   return (
-    <section className='checkOut'>
-      <Container>
-        <div className='inner'>
-          <Row>
-            <Col lg={7}>
-              <div className='leftWrapper'>
-                <h3 className='sellerName'>Seller Name: Alex Kitchen</h3>
-                <div className='introDelivery'>
-                  <h4>Delivery details</h4>
-                  <p>Berlin</p>
-                </div>
-                <div className='introDelivery'>
-                  <h4>Delivery estimate</h4>
-                  <div className='Priority'>
-                    <div className='p-inner'>
-                      <div>
-                        <p>Priority</p>
-                        <p>10—20 min • Delivered directly to you</p>
-                      </div>
-                      <div>
-                        <p>$20</p>
-                      </div>
-                    </div>
-                    <div className='p-inner'>
-                      <div>
-                        <p>Priority</p>
-                        <p>10—20 min</p>
-                      </div>
-                      <div>
-                        <p>$13</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className='introDelivery'>
-                  <h4>Payment</h4>
-                  <div className='Priority'>
-                    <div className='p-inner'>
-                      <p>Add payment method</p>
-                      <button>
-                        <label for='Payment'>Choose a car:</label>
-                        <select nameName='Payment' id='Payment'>
-                          <option value='volvo'>Cash On Delivery</option>
-                          <option value='saab' selected>
-                            Paypal
-                          </option>
-                        </select>
-                      </button>
-                      <button>Paypal</button>
-                      <form>
-                        <button>Submit</button>
-                      </form>
-                    </div>
-                    <div className='p-inner'>
-                      <p>Add promo code</p>
-                      <input type='text' />
-                    </div>
-                  </div>
-                </div>
-                <div className='introDelivery'>
-                  <h4>Order summary</h4>
-                  <div className='Priority'>
-                    <div className='p-inner-single'>
-                      <p>Total Items: {cart?.length}</p>
-                    </div>
-                    <div className='p-inner-items'>
-                      {cart?.length > 0 ? (
-                        <ul>
-                          {cart?.map((item, index) => (
-                            <li key={index}>
-                              <div>
-                                <span>{index + 1}</span>{" "}
-                                <strong>{item?.foodName}</strong>
-                              </div>
-                              <div className='img-inner'>
-                                <div className='img-file'>
-                                  <img src={item?.foodImage} alt='' />
-                                </div>
-                                <div>
-                                  <button>${item?.foodPrice}</button>
-                                </div>
-                              </div>
-                            </li>
-                          ))}
-                        </ul>
-                      ) : (
-                        <p>No Order Found</p>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </Col>
-            <Col lg={5}>
-              <div className='inner'>
-                <div className='rightWrapper'>
+    <>
+      <ModalCheckOut show={modalShow} onHide={() => setModalShow(false)} />
+      <section className='checkOut'>
+        <Container>
+          <div className='inner'>
+            <Row>
+              <Col lg={7}>
+                <div className='leftWrapper'>
+                  <h3 className='sellerName'>Seller Name: Alex Kitchen</h3>
                   <div className='introDelivery'>
-                    <h4>Order total : {cart?.length}</h4>
+                    <h4>Delivery details</h4>
+                    <p>Berlin</p>
                   </div>
-                  <div className='order-intro-list'>
-                    <ul>
-                      <li>
-                        <span>Subtotal:</span> <span>${subTotal}</span>
-                      </li>
-                      <li>
-                        <span>Delivery Fee:</span> <span>${deliveryFee}</span>
-                      </li>
-                      <li>
-                        <span>Small order fee:</span>{" "}
-                        <span>${smallOrderFee}</span>
-                      </li>
-                      <li>
-                        <span>Taxes:</span> <span>${taxesFee}</span>
-                      </li>
-                    </ul>
+
+                  <div className='introDelivery'>
+                    <h4>Delivery Addresss</h4>
+                    <div className='Priority '>
+                      <div
+                        className='p-inner shadow-sm'
+                        onClick={() => setModalShow(true)}
+                      >
+                        <div className='d-flex align-content-center'>
+                          <AiOutlinePlus size={20} />
+                          <p className='mx-2'>Add New Address</p>
+                        </div>
+                        <div></div>
+                      </div>
+                      <div className='p-inner'>
+                        <div>
+                          <p>Priority</p>
+                          <p>10—20 min • Delivered directly to you</p>
+                        </div>
+                        <div>
+                          <p>$20</p>
+                        </div>
+                      </div>
+                      <div className='p-inner'>
+                        <div>
+                          <p>Priority</p>
+                          <p>10—20 min</p>
+                        </div>
+                        <div>
+                          <p>$13</p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <div className='total'>
-                    <p>Total:</p>
-                    <span>${totalPrice}</span>
+                  <div className='introDelivery'>
+                    <h4>Payment</h4>
+                    <div className='Priority'>
+                      <div className='p-inner'>
+                        <p>Add payment method</p>
+                        <button>
+                          <label for='Payment'>Choose a car:</label>
+                          <select nameName='Payment' id='Payment'>
+                            <option value='volvo'>Cash On Delivery</option>
+                            <option value='saab' selected>
+                              Paypal
+                            </option>
+                          </select>
+                        </button>
+                        <button>Paypal</button>
+                        <form>
+                          <button>Submit</button>
+                        </form>
+                      </div>
+                      <div className='p-inner'>
+                        <p>Add promo code</p>
+                        <input type='text' />
+                      </div>
+                    </div>
                   </div>
-                  <div className='trams'>
-                    <p>
-                      <strong>Terms:</strong> All prices incl. VAT. For your
-                      order the Uber Eats additional conditions apply
-                    </p>
-                    <p>
-                      Information about the processing of your data is available
-                      in our privacy notice
-                    </p>
-                    <p>
-                      If you’re not around when the delivery person arrives,
-                      they’ll leave your order at the door. By placing your
-                      order, you agree to take full responsibility for it once
-                      it’s delivered. Orders containing alcohol or other
-                      restricted items may not be eligible for leave at door and
-                      will be returned to the store if you are not available.
-                    </p>
-                    <p>
-                      You are entitled to the statutory rights of cancellation.
-                      You can find more information about these or their
-                      exclusion in the Uber Eats Additional Terms and the offers
-                      of the partners.
-                    </p>
-                  </div>
-                  <div className='payment-btn'>
-                    <button onClick={() => payment()}>
-                      Continue To Payment
-                    </button>
+                  <div className='introDelivery'>
+                    <h4>Order summary</h4>
+                    <div className='Priority'>
+                      <div className='p-inner-single'>
+                        <p>Total Items: {cart?.length}</p>
+                      </div>
+                      <div className='p-inner-items'>
+                        {cart?.length > 0 ? (
+                          <ul>
+                            {cart?.map((item, index) => (
+                              <li key={index}>
+                                <div>
+                                  <span>{index + 1}</span>{" "}
+                                  <strong>{item?.foodName}</strong>
+                                </div>
+                                <div className='img-inner'>
+                                  <div className='img-file'>
+                                    <img src={item?.foodImage} alt='' />
+                                  </div>
+                                  <div>
+                                    <button>${item?.foodPrice}</button>
+                                  </div>
+                                </div>
+                              </li>
+                            ))}
+                          </ul>
+                        ) : (
+                          <p>No Order Found</p>
+                        )}
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </Col>
-          </Row>
-        </div>
-      </Container>
-    </section>
+              </Col>
+              <Col lg={5}>
+                <div className='inner'>
+                  <div className='rightWrapper'>
+                    <div className='introDelivery'>
+                      <h4>Order total : {cart?.length}</h4>
+                    </div>
+                    <div className='order-intro-list'>
+                      <ul>
+                        <li>
+                          <span>Subtotal:</span> <span>${subTotal}</span>
+                        </li>
+                        <li>
+                          <span>Delivery Fee:</span> <span>${deliveryFee}</span>
+                        </li>
+                        <li>
+                          <span>Small order fee:</span>{" "}
+                          <span>${smallOrderFee}</span>
+                        </li>
+                        <li>
+                          <span>Taxes:</span> <span>${taxesFee}</span>
+                        </li>
+                      </ul>
+                    </div>
+                    <div className='total'>
+                      <p>Total:</p>
+                      <span>${totalPrice}</span>
+                    </div>
+                    <div className='trams'>
+                      <p>
+                        <strong>Terms:</strong> All prices incl. VAT. For your
+                        order the Uber Eats additional conditions apply
+                      </p>
+                      <p>
+                        Information about the processing of your data is
+                        available in our privacy notice
+                      </p>
+                      <p>
+                        If you’re not around when the delivery person arrives,
+                        they’ll leave your order at the door. By placing your
+                        order, you agree to take full responsibility for it once
+                        it’s delivered. Orders containing alcohol or other
+                        restricted items may not be eligible for leave at door
+                        and will be returned to the store if you are not
+                        available.
+                      </p>
+                      <p>
+                        You are entitled to the statutory rights of
+                        cancellation. You can find more information about these
+                        or their exclusion in the Uber Eats Additional Terms and
+                        the offers of the partners.
+                      </p>
+                    </div>
+                    <div className='payment-btn'>
+                      <button onClick={() => payment()}>
+                        Continue To Payment
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </Col>
+            </Row>
+          </div>
+        </Container>
+      </section>
+    </>
   );
 };
 

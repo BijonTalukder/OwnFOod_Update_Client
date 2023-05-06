@@ -41,7 +41,7 @@ import {
   decreaseItem,
   removeItem,
 } from "../../Redux/State-slice/CartSlice";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { Uber_image } from "../../Database/ImgData";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-hot-toast";
@@ -153,7 +153,7 @@ const Header = () => {
     window.location.reload(false);
   };
 
-  console.log(cart);
+  // console.log(cart);
   let total = 0;
   for (let i = 0; i < cart.length; i++) {
     total = total + cart[i].foodQty * cart[i].foodPrice;
@@ -162,23 +162,32 @@ const Header = () => {
   useEffect(() => {
     localStorage.setItem("cartList", JSON.stringify(cart));
   }, [cart]);
-  console.log(User._id);
+
   const checkOut = async () => {
     if (User) {
-      console.log("from user");
-      await fetch("http://localhost:5000/api/v1/create-cart-items", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ customerID: User._id, cartItem: cart }),
-      })
-        .then((res) => res.json())
-        .then((data) => console.log(data));
+      try {
+        await fetch(`${BaseURL}/create-cart-items`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ customerID: User?._id, cartItem: cart }),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.status === "Success") {
+              navigate("/CheckOut");
+              // <Navigate to={"/checkOut"} />;
+              toast.success("Check Out successful!", {
+                position: "bottom-center",
+              });
+            }
+          });
+      } catch (e) {}
     }
     //localStorage.setItem("checkOut", JSON.stringify({ cart, total }));
   };
   // useEffect(() => {}, []);
   const location = useLocation();
-  // console.log(location);
   return (
     <header className='Header shadow'>
       {/* ================== Nav Section ================== */}
@@ -670,12 +679,25 @@ const Header = () => {
                   <span>apply</span>
                 </button>
               </form>
-              <Link to={"/CheckOut"}>
+              {User ? (
                 <button className='cart-checkout-btn' onClick={checkOut}>
                   <span className='checkout-label'>Proceed to Checkout</span>
                   <span className='checkout-price'>${total}</span>
                 </button>
-              </Link>
+              ) : (
+                <Link to={"/CheckOut"}>
+                  <button className='cart-checkout-btn' onClick={checkOut}>
+                    <span className='checkout-label'>Proceed to Checkout</span>
+                    <span className='checkout-price'>${total}</span>
+                  </button>
+                </Link>
+              )}
+              {/* <Link to={"/CheckOut"}> */}
+              {/* <button className='cart-checkout-btn' onClick={checkOut}>
+                <span className='checkout-label'>Proceed to Checkout</span>
+                <span className='checkout-price'>${total}</span>
+              </button> */}
+              {/* </Link> */}
             </div>
           </aside>
         </SlidingPane>
