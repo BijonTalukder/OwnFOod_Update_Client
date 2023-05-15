@@ -40,14 +40,6 @@ const CheckOut = () => {
 
     // call the function
     fetchData();
-    //   // make sure to catch any error
-    //   .catch(console.error);
-    // fetch(`${BaseURL}/get-single-cart-by-user/${UserDetails?._id}`)
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     // setCart(data.data[0]?.cartData[0]?.cartItem);
-    //     //setSubTotal(data.data[0]?.cartData[0]?.foodTotalPrice);
-    //   });
   }, []);
   console.log(subtotal);
   let deliveryFee = 50;
@@ -55,7 +47,8 @@ const CheckOut = () => {
   let taxesFee = 15;
   let totalPrice = subtotal + deliveryFee + taxesFee;
 
-  const payment = () => {
+  const Order = (name, phoneNumber, country, city, region) => {
+    console.log(name, phoneNumber, country, city, region);
     let postBody = {};
     if (cart?.length !== 0) {
       postBody.orderDeliveryAddressID = "63e8c354f4e215d144fe500a";
@@ -97,20 +90,13 @@ const CheckOut = () => {
     }
   };
 
-  // const hostedFields = usePayPalHostedFields();
-  // const options = {
-  //   // passing the client secret obtained from the server
-  //   clientSecret: "{{CLIENT_SECRET}}",
-  // };
-  // const paypal = () => {
-  //   <Elements stripe={stripePromise} options={options}>
-  //     <PaymentElement />
-  //   </Elements>;
-  // };
-
   return (
     <>
-      <ModalCheckOut show={modalShow} onHide={() => setModalShow(false)} />
+      <ModalCheckOut
+        show={modalShow}
+        Order={Order}
+        onHide={() => setModalShow(false)}
+      />
       <section className='checkOut'>
         <Container>
           <div className='inner'>
@@ -268,7 +254,10 @@ const CheckOut = () => {
                       </p>
                     </div>
                     <div className='payment-btn'>
-                      <button onClick={() => payment()}>
+                      <button
+
+                      // onClick={() => payment()}
+                      >
                         Continue To Payment
                       </button>
                     </div>

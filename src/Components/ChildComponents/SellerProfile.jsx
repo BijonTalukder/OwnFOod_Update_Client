@@ -47,10 +47,10 @@ const SellerProfile = () => {
                 />
                 <div className='ms-profile-user-info d-flex justify-content-between'>
                   <div>
-                    <h4 className='ms-profile-username text-white'>
+                    <h4 className='ms-profile-username text-dark'>
                       {seller?.kitchenName}
                     </h4>
-                    <h2 className='ms-profile-role'>
+                    <h2 className='ms-profile-role text-dark'>
                       {seller?.sellerNationality}
                     </h2>
                   </div>
@@ -80,8 +80,8 @@ const SellerProfile = () => {
                 <div className='col-12'>
                   <div className='ms-panel ms-panel-fh'>
                     <div className='ms-panel-body'>
-                      <h4 className=' '>Skill</h4>
-                      <h4 className=''>Restrictions</h4>
+                      <h5 className=' '>Skill</h5>
+                      <h5 className=''>Restrictions</h5>
                       {/* <hr />
                       <p>{seller?.aboutSeller}</p> */}
                     </div>
@@ -95,8 +95,8 @@ const SellerProfile = () => {
                   <ul className='ms-profile-stat'>
                     <li>
                       <div>
-                        <p>excelent</p>
-                        <div></div>
+                        <p>Review: 4.5</p>
+                        <div>Total Food : 100</div>
                       </div>
                     </li>
                   </ul>
