@@ -17,6 +17,7 @@ import ForgetPasswordPage from "../Pages/ForgetPasswordPage";
 import OTPPage from "../Pages/OTPPage";
 import ResetPasswordPage from "../Pages/ResetPasswordPage";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
+import FoodGallery from "../Components/ChildComponents/FoodGallery";
 
 export const routes = createBrowserRouter([
   {
@@ -30,6 +31,12 @@ export const routes = createBrowserRouter([
   {
     path: "/SellerProfile/:id",
     element: <SellerProfilePage />,
+    children: [
+      {
+        path: "/SellerProfile/:id",
+        element: <FoodGallery />,
+      },
+    ],
   },
   {
     path: "/Category/:id",
@@ -90,5 +97,9 @@ export const routes = createBrowserRouter([
   {
     path: "/Reset-Password",
     element: <ResetPasswordPage />,
+  },
+  {
+    path: "/food",
+    element: <FoodGallery />,
   },
 ]);

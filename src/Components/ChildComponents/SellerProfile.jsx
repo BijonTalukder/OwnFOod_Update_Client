@@ -2,7 +2,7 @@ import axios from "axios";
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, Outlet, useParams } from "react-router-dom";
 import { BaseURL } from "../../Helper/config";
 import CenterSlider from "./CenterSlider";
 import { Button } from "react-bootstrap";
@@ -22,7 +22,7 @@ const SellerProfile = () => {
   }, []);
 
   let totalSub = 0;
-
+  console.log(seller);
   for (let i = 0; i < seller?.foodReview?.length; i++) {
     totalSub = totalSub + seller?.foodReview?.[i].reviewStar;
   }
@@ -108,7 +108,7 @@ const SellerProfile = () => {
 
             <div className='col-xl-2 col-md-12'>
               <div className='asidebar  bg-white shadow-lg'>
-                <Link to={"/sellerprofile/allproduct"}> All Prodct</Link>
+                <Link to={`/SellerProfile/${params.id}`}> All Prodct</Link>
                 <Link to={"/ba"}>Chickn</Link>
                 <Link to={"/allprduct"}>Burger</Link>
                 <Link to={"/allprouct"}>Burger</Link>
@@ -198,6 +198,7 @@ const SellerProfile = () => {
                   </div>
                 </div>
               </div>
+              <Outlet />
               <Dairy />
               <Map />
             </div>
