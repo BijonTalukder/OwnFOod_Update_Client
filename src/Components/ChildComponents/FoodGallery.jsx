@@ -6,7 +6,9 @@ import { Col, Container, Row } from "react-bootstrap";
 import { FaHeart, FaPlay, FaQuestion, FaStar } from "react-icons/fa";
 import { Link, useParams } from "react-router-dom";
 import { BaseURL } from "../../Helper/config";
-
+import Slider from "react-slick";
+import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
+// import "../../../public/Assets/CSS/ComponentsCss/FoodGallery.css";
 const FoodGallery = () => {
   const data = [
     {
@@ -92,8 +94,45 @@ const FoodGallery = () => {
       });
   }, []);
   console.log(seller);
+
+  const PreviousBtn = (props) => {
+    console.log(props);
+    const { className, onClick } = props;
+    return (
+      <div className={className} onClick={onClick}>
+        <div className='carousel-arrow-left '>
+          <AiOutlineArrowLeft
+            className='text-white text-bold p-1 mt-1'
+            size={45}
+          />
+        </div>
+      </div>
+    );
+  };
+  const NextBtn = (props) => {
+    const { className, onClick } = props;
+    return (
+      <div className={className} onClick={onClick}>
+        <div className='carousel-arrow-right'>
+          <AiOutlineArrowRight
+            className='text-white text-bold p-1 mt-1'
+            size={45}
+          />
+        </div>
+      </div>
+    );
+  };
+  const settings = {
+    dots: false,
+    infinite: true,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    speed: 500,
+    cssEase: "linear",
+    pauseOnHover: true,
+  };
   return (
-    <div className='Category ProfileFoodGallery'>
+    <div className='Category CardSlider FoodGallery'>
       {/* <section className='inner-section single-banner bannerstyle'>
         <div className='container text-white'></div>
       </section> */}
@@ -106,128 +145,127 @@ const FoodGallery = () => {
                   <div className='top-filter d-flex justify-content-end'></div>
                 </div>
               </div> */}
+
               <div className='row'>
-                {seller?.foodData?.length !== undefined &&
-                seller?.foodData?.length > 0 ? (
-                  <>
+                <Col className='shadow-sm p-2' xs={12}>
+                  <h6>Fruit and vegetables</h6>
+                </Col>
+                <Col>
+                  <Slider
+                    {...settings}
+                    prevArrow={<PreviousBtn />}
+                    nextArrow={<NextBtn />}
+                  >
                     {seller?.foodData?.map((item, index) => (
-                      <Col xs={3} className='mb-4' key={index}>
-                        <div className={`inner__body ${"Pink"}`}>
-                          <div className='img__file'>
-                            <img
-                              className='img-fluid'
-                              src={item?.foodImage}
-                              alt=''
-                            />
-                            <div className='text_design'>
-                              <h5>{item?.kitchenName}</h5>
-                            </div>
-                            <ul className='card-action-buttons'>
-                              <li>
-                                <a
-                                  href='#'
-                                  className='btn-floating  white'
-                                  alt=''
-                                >
-                                  <i className='material-icons grey-text text-darken-3'>
-                                    <FaQuestion />
-                                  </i>
-                                </a>
-                              </li>
-                              <li>
-                                <a className='btn-floating accent-2'>
-                                  <i className='material-icons like'>
-                                    <FaHeart />
-                                  </i>
-                                </a>
-                              </li>
-                              <li>
-                                <a id='buy' className='btn-floating  blue'>
-                                  <i className='material-icons buy'>
-                                    <FaStar />
-                                  </i>
-                                </a>
-                              </li>
-                              <li>
-                                <a id='buy' className='btn-floating  blue'>
-                                  <i className='material-icons buy'>
-                                    <FaPlay />
-                                  </i>
-                                </a>
-                              </li>
-                            </ul>
+                      <div className={`inner__body ${"Pink"} cardSlider_body`}>
+                        <div className='img__file'>
+                          <img
+                            className='img-fluid'
+                            src={item?.foodImage}
+                            alt=''
+                          />
+                          <div className='text_design'>
+                            <h5>{item?.kitchenName}</h5>
                           </div>
-                          <div className='text__file'>
-                            <div className='d-flex justify-content-between align-items-center top_header'>
-                              <p className='price'>${item?.foodPrice}</p>
-
-                              <p className='intro'>
-                                <i
-                                  className='material-icons buy'
-                                  //   onClick={() => handleAddToCart(item)}
-                                >
-                                  add_shopping_cart
+                          <ul className='card-action-buttons'>
+                            <li>
+                              <a
+                                href='#'
+                                className='btn-floating  white'
+                                alt=''
+                              >
+                                <i className='material-icons grey-text text-darken-3'>
+                                  <FaQuestion />
                                 </i>
-                              </p>
-                            </div>
-                            <div className='d-flex align-items-center justify-content-center'>
-                              <Link to={`/ProductsDetails/${item?._id}`}>
-                                <p
-                                  className=''
-                                  style={{
-                                    marginTop: -18,
-                                    position: "relative",
-                                  }}
-                                >
-                                  <h2>{item?.foodName?.slice(0, 10)}</h2>
-                                </p>
-                              </Link>
-                            </div>
-                            <ul className='bottom_footer'>
-                              <li>
-                                <img
-                                  src='/Assets/Img/pot-1.jpeg'
-                                  className='footer_img'
-                                  alt=''
-                                />
-                              </li>
-                              <li>
-                                <img
-                                  src='/Assets/Img/pot-2.jpeg'
-                                  className='footer_img'
-                                  alt=''
-                                />
-                              </li>
-                              <li>
-                                <img
-                                  src='/Assets/Img/pot-3.jpeg'
-                                  className='footer_img'
-                                  alt=''
-                                />
-                              </li>
-                            </ul>
+                              </a>
+                            </li>
+                            <li>
+                              <a className='btn-floating accent-2'>
+                                <i className='material-icons like'>
+                                  <FaHeart />
+                                </i>
+                              </a>
+                            </li>
+                            <li>
+                              <a id='buy' className='btn-floating  blue'>
+                                <i className='material-icons buy'>
+                                  <FaStar />
+                                </i>
+                              </a>
+                            </li>
+                            <li>
+                              <a id='buy' className='btn-floating  blue'>
+                                <i className='material-icons buy'>
+                                  <FaPlay />
+                                </i>
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                        <div className='text__file'>
+                          <div className='d-flex justify-content-between align-items-center top_header'>
+                            <p className='price'>${item?.foodPrice}</p>
 
-                            {/* <div className='overlay__img'>
+                            <p className='intro'>
+                              <i
+                                className='material-icons buy'
+                                //   onClick={() => handleAddToCart(item)}
+                              >
+                                add_shopping_cart
+                              </i>
+                            </p>
+                          </div>
+                          <div className='d-flex align-items-center justify-content-center'>
+                            <Link to={`/ProductsDetails/${item?._id}`}>
+                              <p
+                                className=''
+                                style={{
+                                  marginTop: -18,
+                                  position: "relative",
+                                }}
+                              >
+                                <h2>{item?.foodName?.slice(0, 10)}</h2>
+                              </p>
+                            </Link>
+                          </div>
+                          <ul className='bottom_footer'>
+                            <li>
                               <img
-                                className='img-fluid'
-                                src={
-                                  "/Assets/Img/profileKitchenImg/profile-kit6.png"
-                                }
+                                src='/Assets/Img/pot-1.jpeg'
+                                className='footer_img'
                                 alt=''
                               />
-                            </div> */}
-                          </div>
+                            </li>
+                            <li>
+                              <img
+                                src='/Assets/Img/pot-2.jpeg'
+                                className='footer_img'
+                                alt=''
+                              />
+                            </li>
+                            <li>
+                              <img
+                                src='/Assets/Img/pot-3.jpeg'
+                                className='footer_img'
+                                alt=''
+                              />
+                            </li>
+                          </ul>
+
+                          {/* <div className='overlay__img'>
+                          <img
+                            className='img-fluid'
+                            src={
+                              "/Assets/Img/profileKitchenImg/profile-kit6.png"
+                            }
+                            alt=''
+                          />
+                        </div> */}
                         </div>
-                      </Col>
+                      </div>
                     ))}
-                  </>
-                ) : (
-                  <>
-                    <div className='mt-4'>
-                      <h2>No Food Found!</h2>
-                    </div>
-                  </>
-                )}
+                  </Slider>
+                </Col>
               </div>
             </div>
           </div>

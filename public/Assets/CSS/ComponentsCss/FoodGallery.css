@@ -1,56 +1,56 @@
-.FoodGallery {
+.ProfileFoodGallery {
   padding: 20px 0;
 }
-.FoodGallery .inner__body {
+.ProfileFoodGallery .inner__body {
   padding: 8px;
   border-radius: 5px;
 }
 
-.FoodGallery .sf_init_title {
+.ProfileFoodGallery .sf_init_title {
   font-weight: 700;
   font-size: larger;
   color: #333;
 }
-.FoodGallery .sf_text-theme {
+.ProfileFoodGallery .sf_text-theme {
   font-family: var(--style-font);
   color: #1b6dc1;
   font-weight: 700;
   font-size: larger;
 }
-.FoodGallery .inner__body.Purple {
+.ProfileFoodGallery .inner__body.Purple {
   background: #9333ea;
 }
-.FoodGallery .inner__body.Fuchsia {
+.ProfileFoodGallery .inner__body.Fuchsia {
   background: #16a34a;
 }
-.FoodGallery .inner__body.Pink {
+.ProfileFoodGallery .inner__body.Pink {
   background: #db2777;
 }
-.FoodGallery .inner__body.Emerald {
+.ProfileFoodGallery .inner__body.Emerald {
   background: #ea580c;
 }
-.FoodGallery .inner__body .img__file {
+.ProfileFoodGallery .inner__body .img__file {
   position: relative;
   border-radius: 7px;
   width: 100%;
   height: 220px;
   overflow: hidden;
 }
-.FoodGallery .inner__body .img__file img {
+.ProfileFoodGallery .inner__body .img__file img {
   border-radius: 7px;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.FoodGallery .inner__body .text__file {
+.ProfileFoodGallery .inner__body .text__file {
   /* padding: 12px 8px; */
   padding: 12px 9px 2px 9px;
   margin-top: 14px;
   position: relative;
 }
 
-.FoodGallery .inner__body .text__file .overlay__img {
+.ProfileFoodGallery .inner__body .text__file .overlay__img {
   position: absolute;
   right: 114px;
   top: -54px;
@@ -58,16 +58,16 @@
   border: 3px solid #fff;
   border-radius: 50%;
 }
-.FoodGallery .inner__body .text__file h2 {
+.ProfileFoodGallery .inner__body .text__file h2 {
   font-size: 20px;
   color: #fff;
   font-weight: 600;
 }
-.FoodGallery .inner__body .text__file .name {
+.ProfileFoodGallery .inner__body .text__file .name {
   font-size: 15px;
   color: #ddd;
 }
-.FoodGallery .inner__body .text__file .intro {
+.ProfileFoodGallery .inner__body .text__file .intro {
   font-size: 15px;
   color: #fff;
   font-weight: normal;
@@ -81,10 +81,10 @@
   align-items: center;
   line-height: initial;
 }
-.FoodGallery .inner__body .text__file .star {
+.ProfileFoodGallery .inner__body .text__file .star {
   color: #f7dd00;
 }
-.FoodGallery .inner__body .text__file .price {
+.ProfileFoodGallery .inner__body .text__file .price {
   left: -8px;
   position: relative;
   font-size: 25px;
@@ -92,8 +92,8 @@
   color: #fff;
 }
 
-.FoodGallery .img__file .text_design {
-  /* background-color: #000000a6; */
+.ProfileFoodGallery .img__file .text_design {
+  background-color: #000000a6;
   position: absolute;
   top: 42%;
   transform: rotate(-90deg) translateY(-50%);
@@ -105,11 +105,11 @@
   align-items: center;
   color: #ffffff;
 }
-.FoodGallery .img__file .text_design h5 {
+.ProfileFoodGallery .img__file .text_design h5 {
   margin-bottom: -1px !important;
 }
 
-.FoodGallery .img__file .card-action-buttons {
+.ProfileFoodGallery .img__file .card-action-buttons {
   position: absolute;
   /* transform: rotate(-90deg); */
   top: 3%;
