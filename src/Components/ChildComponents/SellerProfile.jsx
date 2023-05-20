@@ -118,87 +118,92 @@ const SellerProfile = () => {
               </div>
             </div>
             <div className='col-xl-10 col-md-12'>
-              <div className='ms-panel pt-3'>
-                <div className=' ms-panel-fh'>
-                  <div className='ms-panel-body'>
-                    <h5>Pick a delivery date</h5>
-                    <hr />
-                    <div className='row gap-1 mt-3'>
-                      <div className='col-1 border pick-date'>
-                        <div
-                          className='d-flex flex-column
+              <div className='row'>
+                <div className='ms-panel pt-3'>
+                  <div className=' ms-panel-fh'>
+                    <div className='ms-panel-body'>
+                      <h5>Pick a delivery date</h5>
+                      <hr />
+                      <div className='row gap-1 mt-3'>
+                        <div className='col-1 border pick-date'>
+                          <div
+                            className='d-flex flex-column
                            text-center'
-                        >
-                          <span className='fw-bold pick-day'>SUN</span>
-                          <span>Jan 26</span>
+                          >
+                            <span className='fw-bold pick-day'>SUN</span>
+                            <span>Jan 26</span>
+                          </div>
                         </div>
-                      </div>
-                      <div className='col-1 border'>
-                        <div className='d-flex flex-column text-center'>
-                          <span className='fw-bold'>SUN</span>
-                          <span>Jan 26</span>
+                        <div className='col-1 border'>
+                          <div className='d-flex flex-column text-center'>
+                            <span className='fw-bold'>SUN</span>
+                            <span>Jan 26</span>
+                          </div>
                         </div>
-                      </div>
-                      <div className='col-1 border'>
-                        <div className='d-flex flex-column text-center'>
-                          <span className='fw-bold'>SUN</span>
-                          <span>Jan 26</span>
+                        <div className='col-1 border'>
+                          <div className='d-flex flex-column text-center'>
+                            <span className='fw-bold'>SUN</span>
+                            <span>Jan 26</span>
+                          </div>
                         </div>
-                      </div>
-                      <div className='col-1 border'>
-                        <div className='d-flex flex-column text-center'>
-                          <span className='fw-bold'>SUN</span>
-                          <span>Jan 26</span>
+                        <div className='col-1 border'>
+                          <div className='d-flex flex-column text-center'>
+                            <span className='fw-bold'>SUN</span>
+                            <span>Jan 26</span>
+                          </div>
                         </div>
-                      </div>
-                      <div className='col-1 border'>
-                        <div className='d-flex flex-column text-center'>
-                          <span className='fw-bold'>SUN</span>
-                          <span>Jan 26</span>
+                        <div className='col-1 border'>
+                          <div className='d-flex flex-column text-center'>
+                            <span className='fw-bold'>SUN</span>
+                            <span>Jan 26</span>
+                          </div>
                         </div>
-                      </div>
-                      <div className='col-1 border'>
-                        <div className='d-flex flex-column text-center'>
-                          <span className='fw-bold'>SUN</span>
-                          <span>Jan 26</span>
+                        <div className='col-1 border'>
+                          <div className='d-flex flex-column text-center'>
+                            <span className='fw-bold'>SUN</span>
+                            <span>Jan 26</span>
+                          </div>
                         </div>
-                      </div>
-                      <div className='col-1 border'>
-                        <div className='d-flex flex-column text-center'>
-                          <span className='fw-bold'>SUN</span>
-                          <span>Jan 26</span>
+                        <div className='col-1 border'>
+                          <div className='d-flex flex-column text-center'>
+                            <span className='fw-bold'>SUN</span>
+                            <span>Jan 26</span>
+                          </div>
                         </div>
-                      </div>
-                      <div className='col-1 border'>
-                        <div className='d-flex flex-column text-center'>
-                          <span className='fw-bold'>SUN</span>
-                          <span>Jan 26</span>
+                        <div className='col-1 border'>
+                          <div className='d-flex flex-column text-center'>
+                            <span className='fw-bold'>SUN</span>
+                            <span>Jan 26</span>
+                          </div>
                         </div>
-                      </div>
 
-                      <div className='col-1 border'>
-                        <div className='d-flex flex-column text-center'>
-                          <span className='fw-bold'>SUN</span>
-                          <span>Jan 26</span>
+                        <div className='col-1 border'>
+                          <div className='d-flex flex-column text-center'>
+                            <span className='fw-bold'>SUN</span>
+                            <span>Jan 26</span>
+                          </div>
                         </div>
-                      </div>
-                      <div className='col-1 border'>
-                        <div className='d-flex flex-column text-center'>
-                          <span className='fw-bold'>SUN</span>
-                          <span>Jan 26</span>
+                        <div className='col-1 border'>
+                          <div className='d-flex flex-column text-center'>
+                            <span className='fw-bold'>SUN</span>
+                            <span>Jan 26</span>
+                          </div>
                         </div>
-                      </div>
-                      <div className='col-1 border'>
-                        <div className='d-flex flex-column text-center'>
-                          <span className='fw-bold'>SUN</span>
-                          <span>Jan 26</span>
+                        <div className='col-1 border'>
+                          <div className='d-flex flex-column text-center'>
+                            <span className='fw-bold'>SUN</span>
+                            <span>Jan 26</span>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
+                <div className='col-lg-12'>
+                  <Outlet />
+                </div>
               </div>
-              <Outlet />
+
               <Dairy />
               <Map />
             </div>

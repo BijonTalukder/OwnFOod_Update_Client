@@ -88,11 +88,11 @@ const FoodGallery = () => {
   const [seller, setSeller] = useState([]);
   useEffect(() => {
     axios
-      .get(BaseURL + "/get-single-public-become-seller/" + params.id)
+      .get(BaseURL + "/get-food-sort-by-category/" + params.id)
       .then((res) => {
-        setSeller(res.data.data?.[0]);
+        setSeller(res.data.data);
       });
-  }, []);
+  }, [params.id]);
   console.log(seller);
 
   const PreviousBtn = (props) => {
@@ -133,39 +133,29 @@ const FoodGallery = () => {
   };
   return (
     <div className='Category CardSlider FoodGallery'>
-      {/* <section className='inner-section single-banner bannerstyle'>
-        <div className='container text-white'></div>
-      </section> */}
       <section className='inner-section shop-part'>
         <div className='container'>
-          <div className='row content-reverse'>
-            <div className='col-lg-12'>
-              {/* <div className='row'>
-                <div className='col-lg-12'>
-                  <div className='top-filter d-flex justify-content-end'></div>
+          <>
+            {seller?.map((item, index) => (
+              <div className='row content-reverse'>
+                <div className='col-12 shadow-sm p-2'>
+                  {" "}
+                  <h6>{item._id}</h6>
                 </div>
-              </div> */}
-
-              <div className='row'>
-                <Col className='shadow-sm p-2' xs={12}>
-                  <h6>Fruit and vegetables</h6>
-                </Col>
-                <Col>
-                  <Slider
-                    {...settings}
-                    prevArrow={<PreviousBtn />}
-                    nextArrow={<NextBtn />}
-                  >
-                    {seller?.foodData?.map((item, index) => (
-                      <div className={`inner__body ${"Pink"} cardSlider_body`}>
+                <div className='row'>
+                  <Slider {...settings}>
+                    {item.foods.map((food) => (
+                        <div
+                        className={`inner__body ${"Pink"} cardSlider_body`}
+                      >
                         <div className='img__file'>
                           <img
                             className='img-fluid'
-                            src={item?.foodImage}
+                            src={food?.foodImage}
                             alt=''
                           />
                           <div className='text_design'>
-                            <h5>{item?.kitchenName}</h5>
+                            <h5>{food?.kitchenName}</h5>
                           </div>
                           <ul className='card-action-buttons'>
                             <li>
@@ -204,7 +194,7 @@ const FoodGallery = () => {
                         </div>
                         <div className='text__file'>
                           <div className='d-flex justify-content-between align-items-center top_header'>
-                            <p className='price'>${item?.foodPrice}</p>
+                            <p className='price'>${food?.foodPrice}</p>
 
                             <p className='intro'>
                               <i
@@ -216,7 +206,7 @@ const FoodGallery = () => {
                             </p>
                           </div>
                           <div className='d-flex align-items-center justify-content-center'>
-                            <Link to={`/ProductsDetails/${item?._id}`}>
+                            <Link to={`/ProductsDetails/${food?._id}`}>
                               <p
                                 className=''
                                 style={{
@@ -253,22 +243,23 @@ const FoodGallery = () => {
                           </ul>
 
                           {/* <div className='overlay__img'>
-                          <img
-                            className='img-fluid'
-                            src={
-                              "/Assets/Img/profileKitchenImg/profile-kit6.png"
-                            }
-                            alt=''
-                          />
-                        </div> */}
+                        <img
+                          className='img-fluid'
+                          src={
+                            "/Assets/Img/profileKitchenImg/profile-kit6.png"
+                          }
+                          alt=''
+                        />
+                      </div> */}
                         </div>
                       </div>
                     ))}
+                    <></>
                   </Slider>
-                </Col>
+                </div>
               </div>
-            </div>
-          </div>
+            ))}
+          </>
         </div>
       </section>
     </div>
