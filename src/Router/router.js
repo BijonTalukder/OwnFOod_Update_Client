@@ -18,6 +18,7 @@ import OTPPage from "../Pages/OTPPage";
 import ResetPasswordPage from "../Pages/ResetPasswordPage";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import FoodGallery from "../Components/ChildComponents/FoodGallery";
+import UpdateSellerProfile from "../Pages/UpdateSellerProfile";
 
 export const routes = createBrowserRouter([
   {
@@ -101,5 +102,9 @@ export const routes = createBrowserRouter([
   {
     path: "/food",
     element: <FoodGallery />,
+  },
+  {
+    path: "/updateProfile",
+    element: <UpdateSellerProfile />,
   },
 ]);
