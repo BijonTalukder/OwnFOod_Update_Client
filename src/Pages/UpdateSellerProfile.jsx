@@ -1,4 +1,5 @@
 import React from "react";
+import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 
 const UpdateSellerProfile = () => {
   return (
@@ -44,26 +45,28 @@ const UpdateSellerProfile = () => {
           </div>
         </div>
         <div className='col-12'>
-          <ul class='nav nav-tabs'>
-            <li class='nav-item'>
-              <a class='nav-link active' aria-current='page' href='#'>
-                Active
-              </a>
-            </li>
-            <li class='nav-item'>
-              <a class='nav-link' href='#'>
-                Link
-              </a>
-            </li>
-            <li class='nav-item'>
-              <a class='nav-link' href='#'>
-                Link
-              </a>
-            </li>
-            <li class='nav-item'>
-              <a class='nav-link disabled'>Disabled</a>
-            </li>
-          </ul>
+          <Tabs>
+            <TabList>
+              <Tab>Title 1</Tab>
+              <Tab>Title 2</Tab>
+            </TabList>
+
+            <TabPanel>
+              <h2>Any content 1</h2>
+            </TabPanel>
+            <TabPanel>
+              <h2>Any content 2</h2>
+            </TabPanel>
+          </Tabs>
+        </div>
+        <div className="col-12">
+            <div className="row">
+                <div>
+
+                </div>
+                <div></div>
+
+            </div>
         </div>
       </div>
     </div>
