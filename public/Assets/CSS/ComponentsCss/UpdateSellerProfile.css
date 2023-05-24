@@ -1,4 +1,63 @@
-.UpdateSellerProfile .profile-picture img{
-    object-fit: cover;
-    width: 200px;
+
+.UpdateSellerProfile{
+    margin-top: 160px;
+margin-left: 10px;
+}
+
+.UpdateSellerProfile .profile-picture img {
+  object-fit: cover;
+  width: 200px;
+}
+.UpdateSellerProfile .wrapper {
+    margin-top: 15px;
+  padding-left: 0px;
+}
+.UpdateSellerProfile .video {
+
+  height: 366px;
+  /* overflow: hidden; */
+  border: 10px solid #eee;
+  border-radius: 5px;
+}
+.UpdateSellerProfile .video video{
+    width: 100%;
+    height: 100%;
+}
+.UpdateSellerProfile .small-video{
+    padding: 0 5px;
+}
+.UpdateSellerProfile .small-video .video-player{
+    width: 100px;
+    height: 100px;
+}
+.UpdateSellerProfile .secound-section{
+    height: 400px;
+    overflow: hidden;
+}
+.UpdateSellerProfile .video-list  {
+    height: 400px;
+overflow-y: auto;}
+.UpdateSellerProfile .fourth-section div>div{
+    background-color: rgb(253, 253, 253);
+
+
+}
+.UpdateSellerProfile .fourth-section{
+    margin-top: 10px;
+}
+.UpdateSellerProfile .fourth-section .cart-item{
+  background-color: rgb(235, 142, 179);
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.UpdateSellerProfile .profile-section>div{
+    /* margin-left: 5px; */
+    padding: 10px;
+    border-radius: 4px;
+background: #ffffff;
+box-shadow:  5px 5px 9px #b1b1b1,
+             -5px -5px 9px #ffffff;
 }
