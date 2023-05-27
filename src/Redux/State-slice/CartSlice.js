@@ -12,27 +12,18 @@ export const CartSlice = createSlice({
   initialState: items,
   reducers: {
     setCartList: (state, action) => {
-      console.log("state");
+
       state.allCartList = action.payload;
     },
     addItem: (state, action) => {
       const newItem = action.payload;
       const existingItem = state.find((item) => item._id === newItem._id);
+    //  const sellerExists = state.find((seller) => seller._id === newItem._id);
 
       if (existingItem) {
         existingItem.foodQty++;
       } else {
         state.push({ ...newItem, foodQty: 1 });
-        // if (User) {
-        //   console.log("from user");
-        //   fetch("http://localhost:5000/api/v1/create-cart-items", {
-        //     method: "POST",
-        //     headers: { "Content-Type": "application/json" },
-        //     body: JSON.stringify({ status: true }),
-        //   })
-        //     .then((res) => res.json())
-        //     .then((data) => console.log(data));
-        // }
       }
     },
     removeItem: (state, action) => {

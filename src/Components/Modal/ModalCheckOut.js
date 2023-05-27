@@ -7,7 +7,6 @@ import { toast } from "react-hot-toast";
 
 const ModalCheckOut = (props) => {
   const { Order } = props;
-  console.log(Order);
   const [country, setCountry] = useState([]);
   const [countryID, setCountryID] = useState("63eb3c5af7ec2bc366654b88");
   const [regionID, setReigionID] = useState("63e8b2e4798c4de2d1ba6c3b");
@@ -68,6 +67,8 @@ const ModalCheckOut = (props) => {
           BaseURL + "/create-address-book",
           {
             cityID: city,
+            Name:name,
+            phoneNumber:phoneNumber,
             regionID: region,
             countryID: country,
             customerID: UserDetails?._id,
@@ -280,7 +281,7 @@ const ModalCheckOut = (props) => {
                   </div>
                 </div>
 
-                <button type='submit'>Place Order</button>
+                <button className="btn btn-primary" type='submit'>Place Order</button>
               </Form>
             </div>
           </div>

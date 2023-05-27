@@ -13,10 +13,11 @@ import ModalCheckOut from "../Modal/ModalCheckOut";
 
 const CheckOut = () => {
   const [modalShow, setModalShow] = React.useState(false);
-  let subtotal = 0;
+  // let subtotal = 0;
   const location = useLocation();
   let [cart, setCart] = useState([]);
   let [subTotal, setSubTotal] = useState(0);
+  let [addressBooks, setAddressBooks] = useState([]);
 
   let navigate = useNavigate();
   const UserDetails = JSON.parse(localStorage.getItem("UserDetails"));
@@ -40,18 +41,28 @@ const CheckOut = () => {
 
     // call the function
     fetchData();
+
+    const addressBook = async () => {
+      const res = await fetch(
+        `${BaseURL}/get-address-book-by-user/${UserDetails?._id}`
+      );
+      const data = await res.json();
+      setAddressBooks(data.data);
+    };
+
+    addressBook();
   }, []);
-  console.log(subtotal);
+
   let deliveryFee = 50;
   let smallOrderFee = 20;
   let taxesFee = 15;
-  let totalPrice = subtotal + deliveryFee + taxesFee;
+  let totalPrice = subTotal + deliveryFee + taxesFee;
 
   const Order = (name, phoneNumber, country, city, region) => {
-    console.log(name, phoneNumber, country, city, region);
+    // console.log(name, phoneNumber, country, city, region);
     let postBody = {};
     if (cart?.length !== 0) {
-      postBody.orderDeliveryAddressID = "63e8c354f4e215d144fe500a";
+      postBody.orderDeliveryAddressID = addressBooks._id;
       postBody.orderBillingAddressID = "63e8c354f4e215d144fe500a";
       postBody.orderStatusID = "63e760ba7dfb72bf9f7d3083";
       postBody.customerID = UserDetails?._id;
@@ -59,7 +70,7 @@ const CheckOut = () => {
       postBody.orderNumber = "12";
       postBody.OrderLabel = "PREORDER";
       postBody.orderNotes = "gtff";
-      postBody.orderTotalAmount = 1250;
+      postBody.orderTotalAmount = totalPrice;
       postBody.orderItems = cart;
     } else {
       toast.error("Please Add Some Food!", {
@@ -103,7 +114,7 @@ const CheckOut = () => {
             <Row>
               <Col lg={7}>
                 <div className='leftWrapper'>
-                  <h3 className='sellerName'>Seller Name: Alex Kitchen</h3>
+                  {/* <h3 className='sellerName'>Seller Name: Alex Kitchen</h3> */}
                   <div className='introDelivery'>
                     <h4>Delivery details</h4>
                     <p>Berlin</p>
@@ -122,24 +133,19 @@ const CheckOut = () => {
                         </div>
                         <div></div>
                       </div>
-                      <div className='p-inner'>
-                        <div>
-                          <p>Priority</p>
-                          <p>10—20 min • Delivered directly to you</p>
+                      {addressBooks.map((item) => (
+                        <div key={item._id} className='p-inner'>
+                          <div>
+                            <p>Deliver to: {item?.Name}</p>
+                            <p>{`${item?.addressText},${item?.RegionData[0]?.regionName},${item?.CityData[0]?.cityName},${item?.CountryData[0]?.countryName}`}</p>
+                            <p>{item?.phoneNumber}</p>
+                            {/* <p>{item?.phoneNumber}</p> */}
+                          </div>
+                          <div className='border border-success round p-1'>
+                            <p>{item.addressType}</p>
+                          </div>
                         </div>
-                        <div>
-                          <p>$20</p>
-                        </div>
-                      </div>
-                      <div className='p-inner'>
-                        <div>
-                          <p>Priority</p>
-                          <p>10—20 min</p>
-                        </div>
-                        <div>
-                          <p>$13</p>
-                        </div>
-                      </div>
+                      ))}
                     </div>
                   </div>
                   <div className='introDelivery'>
@@ -256,7 +262,7 @@ const CheckOut = () => {
                     <div className='payment-btn'>
                       <button
 
-                      // onClick={() => payment()}
+                      onClick={() => Order()}
                       >
                         Continue To Payment
                       </button>
