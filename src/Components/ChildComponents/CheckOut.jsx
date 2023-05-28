@@ -8,6 +8,8 @@ import { BaseURL } from "../../Helper/config";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { toast } from "react-hot-toast";
+import { decode as base64_decode, encode as base64_encode } from "base-64";
+
 import { AiOutlinePlus } from "react-icons/ai";
 import ModalCheckOut from "../Modal/ModalCheckOut";
 
@@ -58,7 +60,7 @@ const CheckOut = () => {
   let taxesFee = 15;
   let totalPrice = subTotal + deliveryFee + taxesFee;
 
-  const Order = (name, phoneNumber, country, city, region) => {
+  const Order = async(name, phoneNumber, country, city, region) => {
     // console.log(name, phoneNumber, country, city, region);
     let postBody = {};
     if (cart?.length !== 0) {
@@ -99,6 +101,58 @@ const CheckOut = () => {
       localStorage.setItem("prevPath", location.pathname);
       navigate("/CustomerLogin");
     }
+
+    const data = {
+      wmx_id: "WMX645b310b5c57b",
+      merchant_order_id: "123ownfood",
+      merchant_ref_id: "123s4wesdfafgasd33",
+      app_name: "www.ownfood.com",
+      cart_info: "WMX5443344555,www.ownfood.com",
+      customer_name: "bijon",
+      customer_email: "bijontalukder1247@gmail.com",
+      customer_add: "chittagong,bangladesh",
+      customer_phone: "01632354922",
+      product_desc: "add cart",
+      amount: "12312",
+      currency: "BDT",
+      options: base64_encode("s=www.ownfood.com,i=103.200.95.105"),
+      callback_url: `${BaseURL}/checkout.com`,
+      access_app_key: "4cb0958293f18545aada2838ceab0b373e0afe47",
+      authorization:`Basic ${base64_encode("ownfood_1079519317:ownfood_1748760319")}`,
+    };
+    axios
+      .post("https://sandbox.walletmix.com/init-payment-process", data, {
+        headers: {
+          token: Token,
+           "Content-Type": "application/x-www-form-urlencoded",
+        },
+      })
+      .then((res) => {
+        console.log(res)
+        if (res.data.statusMsg === "Success") {
+          console.log(res);
+          toast.success("payment success!", {
+            position: "bottom-center",
+          });
+
+          let waletToken = res.data.token;
+          console.log(waletToken);
+          axios.get(`https://sandbox.walletmix.com/bank-paymentprocess/${waletToken}`,{
+            headers: {
+              wmx_id:"WMX645b310b5c57b",
+              authorization:`Basic ${base64_encode("ownfood_1079519317:ownfood_1748760319")}`,
+              access_app_key:"4cb0958293f18545aada2838ceab0b373e0afe47",
+              token: Token,
+               "Content-Type": "application/x-www-form-urlencoded",
+
+            },
+
+          })
+          .then(res=>{
+            console.log(res);
+          })
+        }
+      });
   };
 
   return (
@@ -260,10 +314,7 @@ const CheckOut = () => {
                       </p>
                     </div>
                     <div className='payment-btn'>
-                      <button
-
-                      onClick={() => Order()}
-                      >
+                      <button onClick={() => Order()}>
                         Continue To Payment
                       </button>
                     </div>
