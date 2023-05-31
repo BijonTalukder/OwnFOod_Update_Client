@@ -60,6 +60,8 @@ const ModalCheckOut = (props) => {
     const region = form.region.value;
     const addressType = form.addressType.value;
     const address = form.address.value;
+    const defauladdressType = form.defaultaddress.checked;
+    console.log(defauladdressType);
     console.log(address);
     if (getToken()) {
       axios
@@ -67,8 +69,8 @@ const ModalCheckOut = (props) => {
           BaseURL + "/create-address-book",
           {
             cityID: city,
-            Name:name,
-            phoneNumber:phoneNumber,
+            Name: name,
+            phoneNumber: phoneNumber,
             regionID: region,
             countryID: country,
             customerID: UserDetails?._id,
@@ -76,7 +78,7 @@ const ModalCheckOut = (props) => {
             addressText: address,
             addressType: addressType,
             // shippingDefault: true,
-            // billingDefault: true,
+            billingDefault: defauladdressType,
             // latitude: "203250",
             // logitude: "8569200",
             // zipCode: "45220",
@@ -114,7 +116,7 @@ const ModalCheckOut = (props) => {
         aria-labelledby='contained-modal-title-vcenter'
         centered
       >
-        <Modal.Header closeButton>
+        <Modal.Header closeButton className='Model'>
           <Modal.Title id='contained-modal-title-vcenter'></Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -279,9 +281,26 @@ const ModalCheckOut = (props) => {
                       </div>
                     </div>
                   </div>
+                  <div className='d-flex'>
+                    <div className='toggle'>
+                      <label class='switch'>
+                        <input
+                          type='checkbox'
+                          name='defaultaddress'
+                          defaultChecked
+                        />
+                        <span class='slider'></span>
+                      </label>
+                    </div>
+                    <div>
+                      <h6>Default Billing Address</h6>
+                    </div>
+                  </div>
                 </div>
 
-                <button className="btn btn-primary" type='submit'>Place Order</button>
+                <button className='btn btn-primary' type='submit'>
+                  Place Order
+                </button>
               </Form>
             </div>
           </div>
