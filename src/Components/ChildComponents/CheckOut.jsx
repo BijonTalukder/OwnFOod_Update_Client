@@ -65,8 +65,7 @@ const CheckOut = () => {
 
     addressBook();
   }, []);
-
-  let deliveryFee = 50;
+    let deliveryFee = 50;
   let smallOrderFee = 20;
   let taxesFee = 15;
   let totalPrice = subTotal + deliveryFee + taxesFee;
@@ -78,14 +77,15 @@ const CheckOut = () => {
     if (cart?.length !== 0) {
       postBody.orderDeliveryAddressID = addressBooks._id;
       postBody.orderBillingAddressID = "63e8c354f4e215d144fe500a";
-      postBody.orderStatusID = "63e760ba7dfb72bf9f7d3083";
+
       postBody.customerID = UserDetails?._id;
       postBody.sellerID = "6427d85e4916b8f65ca9a092";
-      postBody.orderNumber = "12";
+
       postBody.OrderLabel = "PREORDER";
       postBody.orderNotes = "gtff";
       postBody.orderTotalAmount = totalPrice;
       postBody.orderItems = cart;
+
     } else {
       toast.error("Please Add Some Food!", {
         position: "bottom-center",
@@ -102,10 +102,12 @@ const CheckOut = () => {
           },
         })
         .then((res) => {
+          console.log(res.data);
           if (res.data.status === "Success") {
             toast.success("Order Place successful!", {
               position: "bottom-center",
             });
+            window.location.href = res.data.url;
             localStorage.removeItem("checkOut");
           }
         });
@@ -134,48 +136,48 @@ const CheckOut = () => {
         "ownfood_1079519317:ownfood_1748760319"
       )}`,
     };
-    axios
-      .post("https://sandbox.walletmix.com/init-payment-process", data, {
-        headers: {
-          token: Token,
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-      })
-      .then((res) => {
-        console.log(res);
-        if (res.data.statusMsg === "Success") {
-          console.log(res);
-          toast.success("payment success!", {
-            position: "bottom-center",
-          });
+    // axios
+    //   .post("https://sandbox.walletmix.com/init-payment-process", data, {
+    //     headers: {
+    //       token: Token,
+    //       "Content-Type": "application/x-www-form-urlencoded",
+    //     },
+    //   })
+    //   .then((res) => {
+    //     console.log(res);
+    //     if (res.data.statusMsg === "Success") {
+    //       console.log(res);
+    //       toast.success("payment success!", {
+    //         position: "bottom-center",
+    //       });
 
-          let waletToken = res.data.token;
-          console.log(waletToken);
-          axios
-            .get(
-              `https://sandbox.walletmix.com/bank-payment-process/${waletToken}`,
-              {
-                headers: {
-                  wmx_id: "WMX645b310b5c57b",
-                  authorization: `Basic ${base64_encode(
-                    "ownfood_1079519317:ownfood_1748760319"
-                  )}`,
-                  access_app_key: "4cb0958293f18545aada2838ceab0b373e0afe47",
-                  token: Token,
-                  "Content-Type": "application/x-www-form-urlencoded",
-                },
-              }
-            )
-            .then((res) => res.request.responseURL)
-            .then((url) => {
-              console.log(url);
-              window.location.href = url;
-            })
-            .catch((error) => {
-              console.log(error);
-            });
-        }
-      });
+    //       let waletToken = res.data.token;
+    //       console.log(waletToken);
+    //       axios
+    //         .get(
+    //           `https://sandbox.walletmix.com/bank-payment-process/${waletToken}`,
+    //           {
+    //             headers: {
+    //               wmx_id: "WMX645b310b5c57b",
+    //               authorization: `Basic ${base64_encode(
+    //                 "ownfood_1079519317:ownfood_1748760319"
+    //               )}`,
+    //               access_app_key: "4cb0958293f18545aada2838ceab0b373e0afe47",
+    //               token: Token,
+    //               "Content-Type": "application/x-www-form-urlencoded",
+    //             },
+    //           }
+    //         )
+    //         .then((res) => res.request.responseURL)
+    //         .then((url) => {
+    //           console.log(url);
+    //           window.location.href = url;
+    //         })
+    //         .catch((error) => {
+    //           console.log(error);
+    //         });
+    //     }
+    //   });
 
   };
 

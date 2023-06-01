@@ -109,7 +109,7 @@ export const routes = createBrowserRouter([
     element: <UpdateSellerProfile />,
   },
   {
-    path:"/payment/successs",
+    path:"/payment/success",
     element:<PaymentSuccess/>
   }
 ]);
