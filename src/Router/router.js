@@ -19,6 +19,7 @@ import ResetPasswordPage from "../Pages/ResetPasswordPage";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import FoodGallery from "../Components/ChildComponents/FoodGallery";
 import UpdateSellerProfile from "../Pages/UpdateSellerProfile";
+import PaymentSuccess from "../Components/ChildComponents/PaymentSuccess";
 
 export const routes = createBrowserRouter([
   {
@@ -107,4 +108,8 @@ export const routes = createBrowserRouter([
     path: "/updateProfile",
     element: <UpdateSellerProfile />,
   },
+  {
+    path:"/payment/successs",
+    element:<PaymentSuccess/>
+  }
 ]);

@@ -128,7 +128,7 @@ const CheckOut = () => {
       amount: totalPrice,
       currency: "BDT",
       options: base64_encode("s=www.ownfood.com,i=103.200.95.105"),
-      callback_url: "http://localhost:3000/CheckOut",
+      callback_url: "http://localhost:5000/api/v1/payment/success",
       access_app_key: "4cb0958293f18545aada2838ceab0b373e0afe47",
       authorization: `Basic ${base64_encode(
         "ownfood_1079519317:ownfood_1748760319"
@@ -176,6 +176,7 @@ const CheckOut = () => {
             });
         }
       });
+
   };
 
   return (
