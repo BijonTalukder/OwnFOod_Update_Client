@@ -9,178 +9,230 @@ const UpdateSellerProfile = () => {
   const a = [1, 2, 3, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 55, 4];
   return (
     <div className=''>
-      <Header/>
+      <Header />
       <div className='UpdateSellerProfile row '>
         <div className='col-12'>
-          <div className='d-flex profile-section gap-1'>
-            <div className='col-4 '>
-              <h2>Name:Sadiya Talukder</h2>
+          <div className='d-flex profile-section gap-2'>
+            <div className='col-8 '>
+              <div className='d-flex align-items-center justify-content-between'>
+                <div>
+                  {" "}
+                  <h2>Name:Sadiya Talukder</h2>
+                </div>
+                <div>
+                  <h6>seller id:something123</h6>
+                </div>
+              </div>
+
               <h3>Kitchen Name: sadia kitchen</h3>
               <p>Catering Service: Saiya</p>
+              <p>I am Bangladeshi</p>
               <p>SellerID:sadiya123</p>
+              <div className='othersinfo d-flex justify-content-between'>
+                <div className=''>
+                  <h5>My Skill</h5>
+                  <div className='d-flex'>
+                    <div className='s-content d-flex justify-content-center align-items-center me-1'>
+                      <span>someresdfgfsdf</span>
+                    </div>
+                    <div className='s-content d-flex justify-content-center align-items-center me-1'>
+                      <span>someresdfgfsdf</span>
+                    </div>
+                    <div className='s-content d-flex justify-content-center align-items-center me-1'>
+                      <span>someresdfgfsdf</span>
+                    </div>
+                  </div>
+                </div>
+                <div className=''>
+                  <h5>My Restriction</h5>
+                  <div className='d-flex'>
+                    <div className='s-content d-flex justify-content-center align-items-center me-1'>
+                      <span>someresdfgfsdf</span>
+                    </div>
+                    <div className='s-content d-flex justify-content-center align-items-center me-1'>
+                      <span>someresdfgfsdf</span>
+                    </div>
+                    <div className='s-content d-flex justify-content-center align-items-center me-1'>
+                      <span>someresdfgfsdf</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
             <div className='col  '>
-              <div className="d-flex align-items-center">
-                <div className='profile-picture d-flex justify-content-center'>
+              <div className='d-flex align-items-center justify-content-center'>
+                <div className='profile-picture'>
                   <img
                     alt=''
                     className='img-fluid '
                     src='/Assets/Img/avatar/01.jpg'
                   />
                 </div>
-                <div>
-                <div className='seller-details ms-4'>
-                  <div className='country-info'>
-                    <h5>i am Bangladeshi </h5>
-                  </div>
-                  <div>
-                    <h5>i can cook something</h5>
-                  </div>
-
-                  <div className='other-skill'>
-                    <h5>My other Skill</h5>
-                  </div>
-                  <div className='restriction'>
-                    <h6>Restriction</h6>
-                  </div>
-                  <div className='taking-order'>
-                    <h6>taking order</h6>
-                  </div>
-                </div>
-                </div>
-
               </div>
             </div>
           </div>
         </div>
         <div className='col-12 mt-4'>
-          <Tabs>
+          {/* <Tabs>
             <TabList>
               <Tab>Title 1</Tab>
               <Tab>Title 2</Tab>
             </TabList>
-            {/*
+
             <TabPanel>
               <h2>Any content 1</h2>
             </TabPanel>
             <TabPanel>
               <h2>Any content 2</h2>
-            </TabPanel> */}
-          </Tabs>
+            </TabPanel>
+          </Tabs> */}
         </div>
-        <div className='col-12 secound-section mt-4'>
-          <div className='row '>
-            <div className='col-6 center-block'>
+        <div className='col-12 second-section mt-4'>
+          <div className='row gap-1 '>
+            <div className='col-6 center-block center-slider'>
               <CenterSlider />
             </div>
-            <div className='col-6'>
-              <div className='row '>
-                <div className='col-8'>
-                  <div className='wrapper '>
-                    <div className='video'>
-                      <ReactPlayer
-                        className='video-player'
-                        url={"https://www.youtube.com/watch?v=NLPuCclm5lA"}
-                        width='100%'
-                        height='100%'
-                      />
+            <div className='col video-player  '>
+              <Tabs>
+                <div className='row   shadow'>
+                  <div className='col-8 video-player-item'>
+                    <TabPanel>
+                      <div className='wrapper '>
+                        <div className='video'>
+                          <ReactPlayer
+                            className=''
+                            url={"https://www.youtube.com/watch?v=NLPuCclm5lA"}
+                            width='100%'
+                            height='100%'
+                          />
+                        </div>
+                      </div>
+                    </TabPanel>
+                    <TabPanel>
+                      <div className='wrapper '>
+                        <div className='video'>
+                          <ReactPlayer
+                            className='video-player'
+                            url={"https://www.youtube.com/watch?v=NLPuCclm5lA"}
+                            width='100%'
+                            height='100%'
+                          />
+                        </div>
+                      </div>
+                    </TabPanel>
+                    <TabPanel>
+                      <div className='wrapper '>
+                        <div className='video'>
+                          <ReactPlayer
+                            className='video-player'
+                            url={"https://www.youtube.com/watch?v=NLPuCclm5lA"}
+                            width='100%'
+                            height='100%'
+                          />
+                        </div>
+                      </div>
+                    </TabPanel>
+                    <TabPanel>
+                      <div className='wrapper '>
+                        <div className='video'>
+                          <ReactPlayer
+                            className='video-player'
+                            url={"https://www.youtube.com/watch?v=NLPuCclm5lA"}
+                            width='100%'
+                            height='100%'
+                          />
+                        </div>
+                      </div>
+                    </TabPanel>
+                  </div>
+                  <div className='col-4 video-list'>
+                    <div className='row gap-2 '>
+                      <TabList>
+                        <Tab className='col video-item shadow'>
+                          <div className='d-flex justify-content-around  align-items-center shadow-sm'>
+                            <div className='small-video '>
+                              <ReactPlayer
+                                className=''
+                                url={
+                                  "https://www.youtube.com/watch?v=NLPuCclm5lA"
+                                }
+                                width='100%'
+                                height='100%'
+                              />
+                            </div>
+                            <div className='text-dark'>
+                              <p>
+                                Lorem ipsum dolor sit amet, consectetur
+                                adipisicing elit.
+                              </p>
+                            </div>
+                          </div>
+                        </Tab>
+                        <Tab className='col video-item shadow'>
+                          <div className='d-flex justify-content-around  align-items-center shadow-sm'>
+                            <div className='small-video '>
+                              <ReactPlayer
+                                className=''
+                                url={
+                                  "https://www.youtube.com/watch?v=NLPuCclm5lA"
+                                }
+                                width='100%'
+                                height='100%'
+                              />
+                            </div>
+                            <div className='text-dark'>
+                              <p>
+                                Lorem ipsum dolor sit amet, consectetur
+                                adipisicing elit.
+                              </p>
+                            </div>
+                          </div>
+                        </Tab>
+                        <Tab className='col video-item shadow'>
+                          <div className='d-flex justify-content-around  align-items-center shadow-sm'>
+                            <div className='small-video '>
+                              <ReactPlayer
+                                className=''
+                                url={
+                                  "https://www.youtube.com/watch?v=NLPuCclm5lA"
+                                }
+                                width='100%'
+                                height='100%'
+                              />
+                            </div>
+                            <div className='text-dark'>
+                              <p>
+                                Lorem ipsum dolor sit amet, consectetur
+                                adipisicing elit.
+                              </p>
+                            </div>
+                          </div>
+                        </Tab>
+                        <Tab className='col video-item shadow'>
+                          <div className='d-flex justify-content-around  align-items-center shadow-sm'>
+                            <div className='small-video '>
+                              <ReactPlayer
+                                className=''
+                                url={
+                                  "https://www.youtube.com/watch?v=NLPuCclm5lA"
+                                }
+                                width='100%'
+                                height='100%'
+                              />
+                            </div>
+                            <div className='text-dark'>
+                              <p>
+                                Lorem ipsum dolor sit amet, consectetur
+                                adipisicing elit.
+                              </p>
+                            </div>
+                          </div>
+                        </Tab>
+                      </TabList>
                     </div>
                   </div>
                 </div>
-                <div className='col-4 video-list'>
-                  <div className='row gap-1 '>
-                    <div className='col'>
-                      <div className='d-flex justify-content-around  align-items-center shadow-sm'>
-                        <div className='small-video '>
-                          <ReactPlayer
-                            className='video-player'
-                            url={"https://www.youtube.com/watch?v=NLPuCclm5lA"}
-                            width='100%'
-                            height='100%'
-                          />
-                        </div>
-                        <div className='text-dark'>
-                          <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing
-                            elit.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className='col'>
-                      <div className='d-flex justify-content-around  align-items-center shadow-sm'>
-                        <div className='small-video '>
-                          <ReactPlayer
-                            className='video-player'
-                            url={"https://www.youtube.com/watch?v=NLPuCclm5lA"}
-                            width='100%'
-                            height='100%'
-                          />
-                        </div>
-                        <div className='text-dark'>
-                          <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing
-                            elit.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className='col'>
-                      <div className='d-flex justify-content-around  align-items-center shadow-sm'>
-                        <div className='small-video '>
-                          <ReactPlayer
-                            className='video-player'
-                            url={"https://www.youtube.com/watch?v=NLPuCclm5lA"}
-                            width='100%'
-                            height='100%'
-                          />
-                        </div>
-                        <div className='text-dark'>
-                          <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing
-                            elit.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className='col'>
-                      <div className='d-flex justify-content-around  align-items-center shadow-sm'>
-                        <div className='small-video '>
-                          <ReactPlayer
-                            className='video-player'
-                            url={"https://www.youtube.com/watch?v=NLPuCclm5lA"}
-                            width='100%'
-                            height='100%'
-                          />
-                        </div>
-                        <div className='text-dark'>
-                          <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing
-                            elit.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className='col'>
-                      <div className='d-flex justify-content-around  align-items-center shadow-sm'>
-                        <div className='small-video '>
-                          <ReactPlayer
-                            className='video-player'
-                            url={"https://www.youtube.com/watch?v=NLPuCclm5lA"}
-                            width='100%'
-                            height='100%'
-                          />
-                        </div>
-                        <div className='text-dark'>
-                          <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              </Tabs>
             </div>
           </div>
         </div>
@@ -260,13 +312,13 @@ const UpdateSellerProfile = () => {
                         elit. Quasi, animi.
                       </p>
                     </div>
-                    <div className="col-2">
-                      <div className="d-flex justify-content-center align-items-center">
-                        <div className="rounded-circle cart-item"> <FaCartPlus className="text-white" size={20}/></div>
-
+                    <div className='col-2'>
+                      <div className='d-flex justify-content-center align-items-center'>
+                        <div className='rounded-circle cart-item'>
+                          {" "}
+                          <FaCartPlus className='text-white' size={20} />
+                        </div>
                       </div>
-
-
                     </div>
                   </div>
                 </div>
@@ -296,13 +348,13 @@ const UpdateSellerProfile = () => {
                         elit. Quasi, animi.
                       </p>
                     </div>
-                    <div className="col-2">
-                      <div className="d-flex justify-content-center align-items-center">
-                        <div className="rounded-circle cart-item"> <FaCartPlus className="text-white" size={20}/></div>
-
+                    <div className='col-2'>
+                      <div className='d-flex justify-content-center align-items-center'>
+                        <div className='rounded-circle cart-item'>
+                          {" "}
+                          <FaCartPlus className='text-white' size={20} />
+                        </div>
                       </div>
-
-
                     </div>
                   </div>
                 </div>
@@ -311,7 +363,7 @@ const UpdateSellerProfile = () => {
             <div className='col-4 shadow-sm  '>
               <h4>Special Offers</h4>
               <div className='row gap-1 m-2'>
-              <div className='col-12 shadow-sm'>
+                <div className='col-12 shadow-sm'>
                   <div className='row  p-2 align-items-center'>
                     <div className='col-4'>
                       <div className='d-flex justify-content-center'>
@@ -337,13 +389,13 @@ const UpdateSellerProfile = () => {
                         elit. Quasi, animi.
                       </p>
                     </div>
-                    <div className="col-2">
-                      <div className="d-flex justify-content-center align-items-center">
-                        <div className="rounded-circle cart-item"> <FaCartPlus className="text-white" size={20}/></div>
-
+                    <div className='col-2'>
+                      <div className='d-flex justify-content-center align-items-center'>
+                        <div className='rounded-circle cart-item'>
+                          {" "}
+                          <FaCartPlus className='text-white' size={20} />
+                        </div>
                       </div>
-
-
                     </div>
                   </div>
                 </div>
@@ -373,13 +425,13 @@ const UpdateSellerProfile = () => {
                         elit. Quasi, animi.
                       </p>
                     </div>
-                    <div className="col-2">
-                      <div className="d-flex justify-content-center align-items-center">
-                        <div className="rounded-circle cart-item"> <FaCartPlus className="text-white" size={20}/></div>
-
+                    <div className='col-2'>
+                      <div className='d-flex justify-content-center align-items-center'>
+                        <div className='rounded-circle cart-item'>
+                          {" "}
+                          <FaCartPlus className='text-white' size={20} />
+                        </div>
                       </div>
-
-
                     </div>
                   </div>
                 </div>

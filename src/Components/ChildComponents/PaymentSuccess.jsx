@@ -21,6 +21,12 @@ const PaymentSuccess = () => {
       position: "bottom-center",
     });
   }
+  else{
+    toast.error("Something  Wrong !", {
+        position: "bottom-center",
+      });
+
+  }
   console.log(order);
   return (
     <div>
@@ -32,7 +38,7 @@ const PaymentSuccess = () => {
     order[0]?.orderStatus===true? <div style={{ margin: "200px" }}>
     <Table striped bordered hover size='sm'>
       <thead>
-        <h2>Congratulation!!! 👌 </h2>
+        <h2>Congratulation!!! 👌  SuccessFully Paid</h2>
         <tr>
           <th>#</th>
           <th> Name</th>
@@ -54,14 +60,14 @@ const PaymentSuccess = () => {
 
         <tr>
           <td colSpan={4}>
-            Total<h4></h4>{" "}
+            <h4>Total</h4>
           </td>
           <td>{order[0]?.orderTotalAmount}</td>
         </tr>
       </tbody>
     </Table>
     {/* <button className="btn btn-primary " onClick={()=>window.print()}>Print</button> */}
-  </div>:<><h2>something wrong</h2></>
+  </div>:<h2>something wrong</h2>
 }
 
       <Footer />
