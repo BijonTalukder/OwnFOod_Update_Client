@@ -3,8 +3,13 @@
   margin-left: 10px;
   margin-right: 10px;
 }
+.UpdateSellerProfile .profile-section .inner-section{
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 30px;
+}
 .UpdateSellerProfile .profile-picture {
-  background-color: rebeccapurple;
+  border: #a21caf;
 }
 .UpdateSellerProfile .profile-picture img {
   object-fit: cover;
@@ -49,7 +54,8 @@ border: 5px solid #e11d48;
 }
 .UpdateSellerProfile .second-section .center-slider {
   border-radius: 5px;
-  background-color: #a21caf;
+  border: 3px solid #a21caf;
+  /* background-color: #a21caf; */
   /* border: 5px solid red; */
   /* box-shadow:  5px 5px 9px  #2f2d2f,
              -5px -5px 9px #3d3c3d; */
@@ -68,9 +74,19 @@ border: 5px solid #e11d48;
 .UpdateSellerProfile .fourth-section {
   margin-top: 10px;
 }
+.UpdateSellerProfile  .cart-item .cart{
+  color: #0d6efd;
+}
+.UpdateSellerProfile  .cart-item:hover{
+  color: white;
+  transition: all 0.5s linear;
 
-.UpdateSellerProfile .fourth-section .cart-item {
-  background-color: rgb(235, 142, 179);
+
+  background-color: #0d6efd;
+}
+.UpdateSellerProfile  .cart-item {
+
+background-color: #c4d7f3 ;
   height: 40px;
   width: 40px;
   display: flex;
@@ -84,6 +100,9 @@ border: 5px solid #e11d48;
   background: #ffffff;
   box-shadow: 5px 5px 9px #b1b1b1, -5px -5px 9px #ffffff;
 }
+.UpdateSellerProfile .othersinfo{
+  margin-top: 30px;
+}
 .UpdateSellerProfile .othersinfo .s-content {
   background-color: rgb(138, 166, 225);
   color: white;
@@ -96,3 +115,13 @@ border: 5px solid #e11d48;
   background-color: rgb(96, 142, 243);
   transition: all linear 1s;
 }
+/* .UpdateSellerProfile .player-wrapper {
+  position: relative;
+  padding-top: 56.25%;
+}
+
+.UpdateSellerProfile .react-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+} */
