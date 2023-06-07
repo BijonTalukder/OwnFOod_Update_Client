@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import CenterSlider from "../Components/ChildComponents/CenterSlider";
 import ReactPlayer from "react-player";
@@ -6,60 +6,90 @@ import { FaCartPlus } from "react-icons/fa";
 import Header from "../Components/Common/Header";
 
 const UpdateSellerProfile = () => {
-  const a = [1, 2, 3, 5,3,3,1,1,1];
+  const [isSticky, setIsSticky] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      console.log(scrollPosition);
+      if (scrollPosition > 1000) {
+        setIsSticky(true);
+      } else {
+        setIsSticky(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const a = [1, 2, 3, 5, 3, 3, 1, 1, 1];
   return (
     <div className=''>
       <Header />
-      <div className='UpdateSellerProfile row '>
+      <div className='UpdateSellerProfile row g-0'>
         {/* first section start */}
         <div className='col-12 p'>
           <div className='d-flex profile-section gap-2'>
             <div className='col-8 '>
-              <div className="inner-section">
-              <div className='d-flex align-items-center justify-content-between'>
-                <div>
-                  {" "}
-                  <h2>Name:Sadiya Talukder</h2>
+              <div className='inner-section'>
+                <div className='d-flex align-items-center justify-content-between'>
+                  <div>
+                    {" "}
+                    <h1 className='text-uppercase SellerName'>
+                      Sadiya Talukder
+                    </h1>
+                  </div>
+                  <div>
+                    <h6>
+                      <span className='sellerId'> seller id:</span> Something123
+                    </h6>
+                  </div>
                 </div>
-                <div>
-                  <h6>seller id:something123</h6>
-                </div>
-              </div>
 
-              <h3>Kitchen Name: sadia kitchen</h3>
-              <p>Catering Service: Saiya</p>
-              <p>I am Bangladeshi</p>
-              <p>SellerID:sadiya123</p>
-              <div className='othersinfo d-flex justify-content-between'>
-                <div className=''>
-                  <h5>My Skill</h5>
-                  <div className='d-flex'>
-                    <div className='s-content d-flex justify-content-center align-items-center me-1'>
-                      <span>someresdfgfsdf</span>
+                <h3>Kitchen Name: Sadia kitchen</h3>
+                <p>Catering Service: Saiya</p>
+                <p>I am Bangladeshi</p>
+                <p>SellerID:sadiya123</p>
+                <div className='othersinfo d-flex justify-content-between'>
+                  <div className=''>
+                    <div className='msr'>
+                      <h5 className="ms-1">My Skill</h5>
                     </div>
-                    <div className='s-content d-flex justify-content-center align-items-center me-1'>
-                      <span>someresdfgfsdf</span>
+
+                    <div className='d-flex'>
+                      <div className='s-content d-flex justify-content-center align-items-center me-1'>
+                        <span>someresdfgfsdf</span>
+                      </div>
+                      <div className='s-content d-flex justify-content-center align-items-center me-1'>
+                        <span>someresdfgfsdf</span>
+                      </div>
+                      <div className='s-content d-flex justify-content-center align-items-center me-1'>
+                        <span>someresdfgfsdf</span>
+                      </div>
                     </div>
-                    <div className='s-content d-flex justify-content-center align-items-center me-1'>
-                      <span>someresdfgfsdf</span>
+                  </div>
+                  <div>
+                    <div className='msr'>
+                      <h5 className="ms-1">My Restriction</h5>
+                    </div>
+
+                    <div className='d-flex'>
+                      <div className='s-content d-flex justify-content-center align-items-center me-1'>
+                        <span>someresdfgfsdf</span>
+                      </div>
+                      <div className='s-content d-flex justify-content-center align-items-center me-1'>
+                        <span>someresdfgfsdf</span>
+                      </div>
+                      <div className='s-content d-flex justify-content-center align-items-center me-1'>
+                        <span>someresdfgfsdf</span>
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div className=''>
-                  <h5>My Restriction</h5>
-                  <div className='d-flex'>
-                    <div className='s-content d-flex justify-content-center align-items-center me-1'>
-                      <span>someresdfgfsdf</span>
-                    </div>
-                    <div className='s-content d-flex justify-content-center align-items-center me-1'>
-                      <span>someresdfgfsdf</span>
-                    </div>
-                    <div className='s-content d-flex justify-content-center align-items-center me-1'>
-                      <span>someresdfgfsdf</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
               </div>
             </div>
             <div className='col  '>
@@ -75,31 +105,29 @@ const UpdateSellerProfile = () => {
             </div>
           </div>
         </div>
-{/* first section end */}
+        {/* first section end */}
 
-{/* second section start */}
-        <div className='col-12 second-section mt-4'>
+        {/* second section start */}
+        <div className='col-12 second-section mt-4 shadow-sm'>
           <div className='row gap-1 '>
             <div className='col-6 center-block center-slider'>
               <CenterSlider />
             </div>
             <div className='col video-player  '>
               <Tabs>
-                <div className='row   shadow'>
+                <div className='row   '>
                   <div className='col-8 video-player-item'>
                     <TabPanel>
-                      <div className='wrapper '>
-                        <div className='video'>
-                          <ReactPlayer
-                           className='react-player'
+                      <div className='video'>
+                        <ReactPlayer
+                          className='react-player'
                           //  playing
                           controls
-                          light={<img className="img-fluid" src='https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80' alt='Thumbnail' />}
-                            url={"https://vimeo.com/243556536"}
-                            width='100%'
-                            height='100%'
-                          />
-                        </div>
+                          // light={<img className="img-fluid" src='https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80' alt='Thumbnail' />}
+                          url={"https://www.youtube.com/watch?v=GPBe-oYlG1A"}
+                          width='100%'
+                          height='100%'
+                        />
                       </div>
                     </TabPanel>
                     <TabPanel>
@@ -130,10 +158,10 @@ const UpdateSellerProfile = () => {
                       <div className='wrapper '>
                         <div className='video'>
                           <ReactPlayer
-                            className='video-player'
+                            className='video-player d-flex align-items-center justify-content-center'
                             url={"https://www.youtube.com/watch?v=NLPuCclm5lA"}
-                            width='100%'
-                            height='100%'
+                            width='80%'
+                            height='80%'
                           />
                         </div>
                       </div>
@@ -142,71 +170,91 @@ const UpdateSellerProfile = () => {
                   <div className='col-4 video-list'>
                     <div className='row gap-2 '>
                       <TabList>
-
-                        <Tab className='col video-item shadow'>
-                          <div className='d-flex justify-content-around  align-items-center shadow-sm'>
-                            <div className='small-video '>
-                              <ReactPlayer
-                                className=''
-                                light={<img className="img-fluid" src='https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80' alt='Thumbnail' />}
-                                url={
-                                  "https://www.youtube.com/watch?v=NLPuCclm5lA"
-                                }
-                                width='100%'
-                                height='100%'
+                      <Tab className='col video-item shadow-sm'>
+                          <div className='row d-flex justify-content-around  align-items-center shadow-sm'>
+                            <div className='small-video col-4 '>
+                              <img
+                                className='img-fluid'
+                                src='https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80'
+                                alt='Thumbnail'
                               />
                             </div>
-                            <div className='text-dark'>
+                            <div className='text-dark col-8'>
                               <p>
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipisicing elit.
+                                Lorem ipsum dolor sit amet, some thing or
+                                another
                               </p>
                             </div>
                           </div>
                         </Tab>
-                        <Tab className='col video-item shadow'>
-                          <div className='d-flex justify-content-around  align-items-center shadow-sm'>
-                            <div className='small-video '>
-                              <ReactPlayer
-                                className=''
-                                light={<img className="img-fluid" src='https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80' alt='Thumbnail' />}
-                                url={
-                                  "https://www.youtube.com/watch?v=NLPuCclm5lA"
-                                }
-                                width='100%'
-                                height='100%'
+                        <Tab className='col video-item shadow-sm'>
+                          <div className='row d-flex justify-content-around  align-items-center shadow-sm'>
+                            <div className='small-video col-4 '>
+                              <img
+                                className='img-fluid'
+                                src='https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80'
+                                alt='Thumbnail'
                               />
                             </div>
-                            <div className='text-dark'>
+                            <div className='text-dark col-8'>
                               <p>
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipisicing elit.
+                                Lorem ipsum dolor sit amet, some thing or
+                                another
                               </p>
                             </div>
                           </div>
                         </Tab>
-                        <Tab className='col video-item shadow'>
-                          <div className='d-flex justify-content-around  align-items-center shadow-sm'>
-                            <div className='small-video '>
-                              <ReactPlayer
-                                className=''
-                                light={<img className="img-fluid" src='https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80' alt='Thumbnail' />}
-                                url={
-                                  "https://www.youtube.com/watch?v=NLPuCclm5lA"
-                                }
-                                width='100%'
-                                height='100%'
+                        <Tab className='col video-item shadow-sm'>
+                          <div className='row d-flex justify-content-around  align-items-center shadow-sm'>
+                            <div className='small-video col-4 '>
+                              <img
+                                className='img-fluid'
+                                src='https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80'
+                                alt='Thumbnail'
                               />
                             </div>
-                            <div className='text-dark'>
+                            <div className='text-dark col-8'>
                               <p>
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipisicing elit.
+                                Lorem ipsum dolor sit amet, some thing or
+                                another
                               </p>
                             </div>
                           </div>
                         </Tab>
-
+                        <Tab className='col video-item shadow-sm'>
+                          <div className='row d-flex justify-content-around  align-items-center shadow-sm'>
+                            <div className='small-video col-4 '>
+                              <img
+                                className='img-fluid'
+                                src='https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80'
+                                alt='Thumbnail'
+                              />
+                            </div>
+                            <div className='text-dark col-8'>
+                              <p>
+                                Lorem ipsum dolor sit amet, some thing or
+                                another
+                              </p>
+                            </div>
+                          </div>
+                        </Tab>
+                        <Tab className='col video-item shadow-sm'>
+                          <div className='row d-flex justify-content-around  align-items-center shadow-sm'>
+                            <div className='small-video col-4 '>
+                              <img
+                                className='img-fluid'
+                                src='https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80'
+                                alt='Thumbnail'
+                              />
+                            </div>
+                            <div className='text-dark col-8'>
+                              <p>
+                                Lorem ipsum dolor sit amet, some thing or
+                                another
+                              </p>
+                            </div>
+                          </div>
+                        </Tab>
                       </TabList>
                     </div>
                   </div>
@@ -216,6 +264,66 @@ const UpdateSellerProfile = () => {
           </div>
         </div>
         {/* second section end */}
+
+        {/* menubar start */}
+        {/* className={isSticky ? "sticky MenuBar col-12" : "MenuBar col-12"} */}
+
+        <div
+          className={`sticky-item MenuBar col-12  MenuBar col-12  ${
+            isSticky ? "sticky " : ""
+          }`}
+        >
+          <nav class='menu-bar'>
+            <ul>
+              <li>
+                <a href='#'>My Profile</a>
+              </li>
+              <li>
+                <a href='#'>Kacchi Biryani </a>
+              </li>
+              <li>
+                <a href='#'>Panta Ilish</a>
+                <ul class='submenu'>
+                  <li>
+                    <a href='#'>Panta Ilish</a>
+                  </li>
+                  <li>
+                    <a href='#'>Panta Ilish </a>
+                  </li>
+                  <li>
+                    <a href='#'>Panta Ilish</a>
+                  </li>
+                  <li>
+                    <a href='#'>Panta Ilish</a>
+                  </li>
+                  <li>
+                    <a href='#'>Panta Ilish Specials</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href='#'>Vuna Khichuri</a>
+              </li>
+              <li>
+                <a href='#'>Morog Polao</a>
+              </li>
+              <li>
+                <a href='#'>Reservations</a>
+              </li>
+              <li>
+                <a href='#'>Grill Chicken</a>
+              </li>
+              <li>
+                <a href='#'>Haleem</a>
+              </li>
+              <li>
+                <a href='#'>Seekh Kebab</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+
+        {/* menuvbar end */}
 
         {/* third section start */}
         {/* <div className='col-12 mt-4'>
@@ -234,17 +342,19 @@ const UpdateSellerProfile = () => {
           </Tabs>
         </div> */}
         {/* third section end */}
-{/* fourth section start */}
-        <div className='col-12 mt-5'>
+        {/* fourth section start */}
+        <div className='col-12 mt-1'>
           <div className='row'>
-            <div className='col-4 shadow-sm  p-1 bg-red'
-            //  style={{background:"#7c3aed"}}
-             >
+            <div
+              className='col-4 shadow-sm   '
+              //  style={{background:"#7c3aed"}}
+            >
               <h5>Dish I Made</h5>
               <div className='row gx-0'>
                 {a.map((i) => (
                   <div className='col-4 gap-1'>
-                    <img style={{border:'3px solid #4ade80'}}
+                    <img
+                      style={{ border: "3px solid white" }}
                       src='/Assets/Img/barger.jpg'
                       className='img-fluid'
                       alt=''
@@ -257,10 +367,26 @@ const UpdateSellerProfile = () => {
               <h4>My Recipe</h4>
               <div className='row gap-1 m-2'>
                 <div className='col-12 shadow-sm'>
+                  <div className='row  p-2 align-items-center text-center'>
+                    <div className='col-12'>
+                      <div className='d-flex justify-content-center'>
+                        <div>
+                          <img
+                            src='/Assets/Img/barger.jpg'
+                            style={{ width: "457px", height: "200px" }}
+                            alt=''
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div className='col-12 text-center'>title sdfsadfs sdf</div>
+                  </div>
+                </div>
+
+                <div className='col-12 shadow-sm'>
                   <div className='row  p-2 align-items-center'>
                     <div className='col-4'>
                       <div className='d-flex justify-content-center'>
-
                         <div>
                           <img
                             src='/Assets/Img/barger.jpg'
@@ -270,25 +396,11 @@ const UpdateSellerProfile = () => {
                         </div>
                       </div>
                     </div>
-                    <div className='col-6'>
+                    <div className='col-8'>
                       <p>
                         Lorem ipsum dolor, sit amet consectetur adipisicing
                         elit. Quasi, animi.
                       </p>
-                    </div>
-                    <div className='col-2'>
-                      <div className="d-flex flex-column align-items-center justify-content-between">
-                      <div>
-                        <h6>200$</h6>
-                      </div>
-                      <div className='d-flex justify-content-center align-items-center'>
-                        <div className='rounded-circle cart-item '>
-                          {" "}
-                          <FaCartPlus className='' size={20} />
-                        </div>
-                      </div>
-                      </div>
-
                     </div>
                   </div>
                 </div>
@@ -296,7 +408,6 @@ const UpdateSellerProfile = () => {
                   <div className='row  p-2 align-items-center'>
                     <div className='col-4'>
                       <div className='d-flex justify-content-center'>
-
                         <div>
                           <img
                             src='/Assets/Img/barger.jpg'
@@ -306,73 +417,23 @@ const UpdateSellerProfile = () => {
                         </div>
                       </div>
                     </div>
-                    <div className='col-6'>
+                    <div className='col-8'>
                       <p>
                         Lorem ipsum dolor, sit amet consectetur adipisicing
                         elit. Quasi, animi.
                       </p>
                     </div>
-                    <div className='col-2'>
-                      <div className="d-flex flex-column align-items-center justify-content-between">
-                      <div>
-                        <h6>200$</h6>
-                      </div>
-                      <div className='d-flex justify-content-center align-items-center'>
-                        <div className='rounded-circle cart-item '>
-                          {" "}
-                          <FaCartPlus className='' size={20} />
-                        </div>
-                      </div>
-                      </div>
-
-                    </div>
                   </div>
                 </div>
-                <div className='col-12 shadow-sm'>
-                  <div className='row  p-2 align-items-center'>
-                    <div className='col-4'>
-                      <div className='d-flex justify-content-center'>
-
-                        <div>
-                          <img
-                            src='/Assets/Img/barger.jpg'
-                            className='img-fluid'
-                            alt=''
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div className='col-6'>
-                      <p>
-                        Lorem ipsum dolor, sit amet consectetur adipisicing
-                        elit. Quasi, animi.
-                      </p>
-                    </div>
-                    <div className='col-2'>
-                      <div className="d-flex flex-column align-items-center justify-content-between">
-                      <div>
-                        <h6>200$</h6>
-                      </div>
-                      <div className='d-flex justify-content-center align-items-center'>
-                        <div className='rounded-circle cart-item '>
-                          {" "}
-                          <FaCartPlus className='' size={20} />
-                        </div>
-                      </div>
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
-
               </div>
             </div>
             <div className='col-4 shadow-sm'>
-              <h5>Experiment  Food</h5>
+              <h5>Experiment Food</h5>
               <div className='row gx-0'>
                 {a.map((i) => (
                   <div className='col-4'>
-                    <img style={{border:'3px solid #2563eb'}}
+                    <img
+                      style={{ border: "3px solid white" }}
                       src='/Assets/Img/barger.jpg'
                       className='img-fluid'
                       alt=''
@@ -385,21 +446,14 @@ const UpdateSellerProfile = () => {
         </div>
         {/* fourth section end */}
         <div className='col-12 mt-5'>
-          <div className='row'>
-          <div className='col-4 shadow-sm  '>
-              <h4>Special Offers</h4>
+          <div className='row g-0'>
+            <div className='col-4 shadow-sm  '>
+              <h4 className='ms-2'>Special Offers</h4>
               <div className='row gap-1 m-2'>
                 <div className='col-12 shadow-sm'>
                   <div className='row  p-2 align-items-center'>
                     <div className='col-4'>
                       <div className='d-flex justify-content-center'>
-                        <div>
-                          <img
-                            src='/Assets/Img/barger.jpg'
-                            className='img-fluid'
-                            alt=''
-                          />
-                        </div>
                         <div>
                           <img
                             src='/Assets/Img/barger.jpg'
@@ -416,10 +470,50 @@ const UpdateSellerProfile = () => {
                       </p>
                     </div>
                     <div className='col-2'>
-                      <div className='d-flex justify-content-center align-items-center'>
-                        <div className='rounded-circle cart-item'>
-                          {" "}
-                          <FaCartPlus className='text-white' size={20} />
+                      <div className='d-flex flex-column align-items-center justify-content-between'>
+                        <div>
+                          <h6>200$</h6>
+                        </div>
+                        <div className='d-flex justify-content-center align-items-center'>
+                          <div className='rounded-circle cart-item'>
+                            {" "}
+                            <FaCartPlus className='' size={20} />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className='col-12 shadow-sm'>
+                  <div className='row  p-2 align-items-center'>
+                    <div className='col-2'>
+                      <div className='d-flex flex-column align-items-center justify-content-between'>
+                        <div className='d-flex justify-content-center align-items-center'>
+                          <div className='rounded-circle cart-item '>
+                            {" "}
+                            <FaCartPlus className='' size={20} />
+                          </div>
+                        </div>
+                        <div>
+                          <h6>200$</h6>
+                        </div>
+                      </div>
+                    </div>
+                    <div className='col-6'>
+                      <p>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing
+                        elit. Quasi, animi.
+                      </p>
+                    </div>
+
+                    <div className='col-4'>
+                      <div className='d-flex justify-content-center'>
+                        <div>
+                          <img
+                            src='/Assets/Img/barger.jpg'
+                            className='img-fluid'
+                            alt=''
+                          />
                         </div>
                       </div>
                     </div>
@@ -436,13 +530,6 @@ const UpdateSellerProfile = () => {
                             alt=''
                           />
                         </div>
-                        <div>
-                          <img
-                            src='/Assets/Img/barger.jpg'
-                            className='img-fluid'
-                            alt=''
-                          />
-                        </div>
                       </div>
                     </div>
                     <div className='col-6'>
@@ -452,10 +539,15 @@ const UpdateSellerProfile = () => {
                       </p>
                     </div>
                     <div className='col-2'>
-                      <div className='d-flex justify-content-center align-items-center'>
-                        <div className='rounded-circle cart-item'>
-                          {" "}
-                          <FaCartPlus className='text-white' size={20} />
+                      <div className='d-flex flex-column align-items-center justify-content-between'>
+                        <div>
+                          <h6>200$</h6>
+                        </div>
+                        <div className='d-flex justify-content-center align-items-center'>
+                          <div className='rounded-circle cart-item '>
+                            {" "}
+                            <FaCartPlus className='' size={20} />
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -470,7 +562,6 @@ const UpdateSellerProfile = () => {
                   <div className='row  p-2 align-items-center'>
                     <div className='col-4'>
                       <div className='d-flex justify-content-center'>
-
                         <div>
                           <img
                             src='/Assets/Img/barger.jpg'
@@ -487,18 +578,17 @@ const UpdateSellerProfile = () => {
                       </p>
                     </div>
                     <div className='col-2'>
-                      <div className="d-flex flex-column align-items-center justify-content-between">
-                      <div>
-                        <h6>200$</h6>
-                      </div>
-                      <div className='d-flex justify-content-center align-items-center'>
-                        <div className='rounded-circle cart-item '>
-                          {" "}
-                          <FaCartPlus className='' size={20} />
+                      <div className='d-flex flex-column align-items-center justify-content-between'>
+                        <div>
+                          <h6>200$</h6>
+                        </div>
+                        <div className='d-flex justify-content-center align-items-center'>
+                          <div className='rounded-circle cart-item '>
+                            {" "}
+                            <FaCartPlus className='' size={20} />
+                          </div>
                         </div>
                       </div>
-                      </div>
-
                     </div>
                   </div>
                 </div>
@@ -506,7 +596,6 @@ const UpdateSellerProfile = () => {
                   <div className='row  p-2 align-items-center'>
                     <div className='col-4'>
                       <div className='d-flex justify-content-center'>
-
                         <div>
                           <img
                             src='/Assets/Img/barger.jpg'
@@ -523,18 +612,17 @@ const UpdateSellerProfile = () => {
                       </p>
                     </div>
                     <div className='col-2'>
-                      <div className="d-flex flex-column align-items-center justify-content-between">
-                      <div>
-                        <h6>200$</h6>
-                      </div>
-                      <div className='d-flex justify-content-center align-items-center'>
-                        <div className='rounded-circle cart-item '>
-                          {" "}
-                          <FaCartPlus className='' size={20} />
+                      <div className='d-flex flex-column align-items-center justify-content-between'>
+                        <div>
+                          <h6>200$</h6>
+                        </div>
+                        <div className='d-flex justify-content-center align-items-center'>
+                          <div className='rounded-circle cart-item '>
+                            {" "}
+                            <FaCartPlus className='' size={20} />
+                          </div>
                         </div>
                       </div>
-                      </div>
-
                     </div>
                   </div>
                 </div>
@@ -542,7 +630,6 @@ const UpdateSellerProfile = () => {
                   <div className='row  p-2 align-items-center'>
                     <div className='col-4'>
                       <div className='d-flex justify-content-center'>
-
                         <div>
                           <img
                             src='/Assets/Img/barger.jpg'
@@ -559,22 +646,318 @@ const UpdateSellerProfile = () => {
                       </p>
                     </div>
                     <div className='col-2'>
-                      <div className="d-flex flex-column align-items-center justify-content-between">
-                      <div>
-                        <h6>200$</h6>
-                      </div>
-                      <div className='d-flex justify-content-center align-items-center'>
-                        <div className='rounded-circle cart-item '>
-                          {" "}
-                          <FaCartPlus className='' size={20} />
+                      <div className='d-flex flex-column align-items-center justify-content-between'>
+                        <div>
+                          <h6>200$</h6>
+                        </div>
+                        <div className='d-flex justify-content-center align-items-center'>
+                          <div className='rounded-circle cart-item '>
+                            {" "}
+                            <FaCartPlus className='' size={20} />
+                          </div>
                         </div>
                       </div>
-                      </div>
-
                     </div>
                   </div>
                 </div>
+              </div>
+            </div>
+            <div className='col-4 shadow-sm overflow-hidden'>
+              <h5>Advance Menu </h5>
+              <div className='row justify-content-center align-items-center d-flex gap-1'>
+                <div className='col-11 '>
+                  <div className='row gap-1'>
+                    <div className='col border text-center'>
+                      <h5>Burger</h5>
+                    </div>
+                    <div className='col border text-center'>
+                      <h5>Fish</h5>
+                    </div>
+                    <div className='col border text-center'>
+                      <h5>Biryani</h5>
+                    </div>
 
+
+                  </div>
+                </div>
+                <div className='col-11 '>
+                  <div className='row gap-1 '>
+                    <div className='col border text-center'>
+                      <h5>Burger</h5>
+                    </div>
+                    <div className='col border text-center'>
+                      <h5>Fish</h5>
+                    </div>
+                    <div className='col border text-center'>
+                      <h5>Biryani</h5>
+                    </div>
+
+
+                  </div>
+                </div>
+                <div className='col-11 '>
+                  <div className='row gap-1 '>
+                    <div className='col border text-center'>
+                      <h5>Burger</h5>
+                    </div>
+                    <div className='col border text-center'>
+                      <h5>Fish</h5>
+                    </div>
+                    <div className='col border text-center'>
+                      <h5>Biryani</h5>
+                    </div>
+
+
+                  </div>
+                </div>
+                <div className='col-11 '>
+                  <div className='row gap-1 '>
+                    <div className='col border text-center'>
+                      <h5>Burger</h5>
+                    </div>
+                    <div className='col border text-center'>
+                      <h5>Fish</h5>
+                    </div>
+                    <div className='col border text-center'>
+                      <h5>Biryani</h5>
+                    </div>
+
+
+                  </div>
+                </div>
+                <div className='col-11 '>
+                  <div className='row gap-1 '>
+                    <div className='col border text-center'>
+                      <h5>Burger</h5>
+                    </div>
+                    <div className='col border text-center'>
+                      <h5>Fish</h5>
+                    </div>
+                    <div className='col border text-center'>
+                      <h5>Biryani</h5>
+                    </div>
+
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className='col-12 mt-5'>
+          <div className='row'>
+            <div className='col-4 shadow-sm  '>
+              <h4>Catering Food</h4>
+              <div className='row gap-1 m-2'>
+                <div className='col-12 shadow-sm'>
+                  <div className='row  p-2 align-items-center'>
+                    <div className='col-4'>
+                      <div className='d-flex justify-content-center'>
+                        <div>
+                          <img
+                            src='/Assets/Img/barger.jpg'
+                            className='img-fluid'
+                            alt=''
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div className='col-6'>
+                      <p>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing
+                        elit. Quasi, animi.
+                      </p>
+                    </div>
+                    <div className='col-2'>
+                      <div className='d-flex flex-column align-items-center justify-content-between'>
+                        <div>
+                          <h6>200$</h6>
+                        </div>
+                        <div className='d-flex justify-content-center align-items-center'>
+                          <div className='rounded-circle cart-item '>
+                            {" "}
+                            <FaCartPlus className='' size={20} />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className='col-12 shadow-sm'>
+                  <div className='row  p-2 align-items-center'>
+                    <div className='col-4'>
+                      <div className='d-flex justify-content-center'>
+                        <div>
+                          <img
+                            src='/Assets/Img/barger.jpg'
+                            className='img-fluid'
+                            alt=''
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div className='col-6'>
+                      <p>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing
+                        elit. Quasi, animi.
+                      </p>
+                    </div>
+                    <div className='col-2'>
+                      <div className='d-flex flex-column align-items-center justify-content-between'>
+                        <div>
+                          <h6>200$</h6>
+                        </div>
+                        <div className='d-flex justify-content-center align-items-center'>
+                          <div className='rounded-circle cart-item '>
+                            {" "}
+                            <FaCartPlus className='' size={20} />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className='col-12 shadow-sm'>
+                  <div className='row  p-2 align-items-center'>
+                    <div className='col-4'>
+                      <div className='d-flex justify-content-center'>
+                        <div>
+                          <img
+                            src='/Assets/Img/barger.jpg'
+                            className='img-fluid'
+                            alt=''
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div className='col-6'>
+                      <p>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing
+                        elit. Quasi, animi.
+                      </p>
+                    </div>
+                    <div className='col-2'>
+                      <div className='d-flex flex-column align-items-center justify-content-between'>
+                        <div>
+                          <h6>200$</h6>
+                        </div>
+                        <div className='d-flex justify-content-center align-items-center'>
+                          <div className='rounded-circle cart-item '>
+                            {" "}
+                            <FaCartPlus className='' size={20} />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className='col-4 shadow-sm  '>
+              <h4>Wish Food</h4>
+              <div className='row gap-1 m-2'>
+                <div className='col-12 shadow-sm'>
+                  <div className='row  p-2 align-items-center'>
+                    <div className='col-4'>
+                      <div className='d-flex justify-content-center'>
+                        <div>
+                          <img
+                            src='/Assets/Img/barger.jpg'
+                            className='img-fluid'
+                            alt=''
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div className='col-6'>
+                      <p>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing
+                        elit. Quasi, animi.
+                      </p>
+                    </div>
+                    <div className='col-2'>
+                      <div className='d-flex flex-column align-items-center justify-content-between'>
+                        <div>
+                          <h6>200$</h6>
+                        </div>
+                        <div className='d-flex justify-content-center align-items-center'>
+                          <div className='rounded-circle cart-item '>
+                            {" "}
+                            <FaCartPlus className='' size={20} />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className='col-12 shadow-sm'>
+                  <div className='row  p-2 align-items-center'>
+                    <div className='col-4'>
+                      <div className='d-flex justify-content-center'>
+                        <div>
+                          <img
+                            src='/Assets/Img/barger.jpg'
+                            className='img-fluid'
+                            alt=''
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div className='col-6'>
+                      <p>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing
+                        elit. Quasi, animi.
+                      </p>
+                    </div>
+                    <div className='col-2'>
+                      <div className='d-flex flex-column align-items-center justify-content-between'>
+                        <div>
+                          <h6>200$</h6>
+                        </div>
+                        <div className='d-flex justify-content-center align-items-center'>
+                          <div className='rounded-circle cart-item '>
+                            {" "}
+                            <FaCartPlus className='' size={20} />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className='col-12 shadow-sm'>
+                  <div className='row  p-2 align-items-center'>
+                    <div className='col-4'>
+                      <div className='d-flex justify-content-center'>
+                        <div>
+                          <img
+                            src='/Assets/Img/barger.jpg'
+                            className='img-fluid'
+                            alt=''
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div className='col-6'>
+                      <p>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing
+                        elit. Quasi, animi.
+                      </p>
+                    </div>
+                    <div className='col-2'>
+                      <div className='d-flex flex-column align-items-center justify-content-between'>
+                        <div>
+                          <h6>200$</h6>
+                        </div>
+                        <div className='d-flex justify-content-center align-items-center'>
+                          <div className='rounded-circle cart-item '>
+                            {" "}
+                            <FaCartPlus className='' size={20} />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
             <div className='col-4 shadow-sm overflow-hidden'>
@@ -637,7 +1020,7 @@ const UpdateSellerProfile = () => {
             </div>
           </div>
         </div> */}
-        <div className='col-12 fourth-section'>
+        {/* <div className='col-12 fourth-section'>
           <div className='row  '>
             <div className='col-4 shadow-sm  '>
               <h4>Special Offers</h4>
@@ -855,7 +1238,7 @@ const UpdateSellerProfile = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
         {/* <div className='col-12 fourth-section'>
           <div className='row  '>
             <div className='col-4 shadow-sm  '>
@@ -1044,7 +1427,6 @@ const UpdateSellerProfile = () => {
           </div>
         </div> */}
       </div>
-
     </div>
   );
 };

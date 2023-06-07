@@ -66,6 +66,35 @@ export const data = [
     text: "Roll Chicken",
     image: "/Assets/Img/roll_chicken.png",
   },
+  {
+    text: "Roll Chicken",
+    image: "/Assets/Img/roll_chicken.png",
+  },
+  {
+    text: "Roll Chicken",
+    image: "/Assets/Img/roll_chicken.png",
+  },
+  {
+    text: "Roll Chicken",
+    image: "/Assets/Img/roll_chicken.png",
+  },
+  {
+    text: "Roll Chicken",
+    image: "/Assets/Img/roll_chicken.png",
+  },
+
+  {
+    text: "Roll Chicken",
+    image: "/Assets/Img/roll_chicken.png",
+  },
+
+
+
+
+
+
+
+
 ];
 
 const CenterSlider = () => {
@@ -95,8 +124,8 @@ const CenterSlider = () => {
           carouselRef={ref}
           render={(width, carouselRef) => {
             let currentVisibleSlide = 5;
-            if (width <= 1280) currentVisibleSlide = 3;
-            if (width <= 720) currentVisibleSlide = 1;
+            if (width <= 1280) currentVisibleSlide = 5;
+            if (width <= 720) currentVisibleSlide = 3;
             return (
               <StackedCarousel
                 ref={carouselRef}
