@@ -84,8 +84,8 @@ const ProfileFoodGallery = () => {
             <div class='title-area text-center pb-3'>
               <span class='sub-title'></span>
               <h2 class='sec-title'>
-                <span className='sf_init_title'> Profile Base </span>{" "}
-                <span class=' sf_text-theme'>Food Gallery</span>
+                <span className='sf_init_title'> All </span>{" "}
+                <span class=' sf_text-theme'>Food </span>
               </h2>
             </div>
           </Col>

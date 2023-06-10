@@ -4,6 +4,7 @@ import CenterSlider from "../Components/ChildComponents/CenterSlider";
 import ReactPlayer from "react-player";
 import { FaCartPlus } from "react-icons/fa";
 import Header from "../Components/Common/Header";
+import ProfileFoodGallery from "../Components/ChildComponents/ProfileFoodGallery";
 
 const UpdateSellerProfile = () => {
   const [isSticky, setIsSticky] = useState(false);
@@ -57,7 +58,7 @@ const UpdateSellerProfile = () => {
                 <div className='othersinfo d-flex justify-content-between'>
                   <div className=''>
                     <div className='msr'>
-                      <h5 className="ms-1">My Skill</h5>
+                      <h5 className='ms-1'>My Skill</h5>
                     </div>
 
                     <div className='d-flex'>
@@ -74,7 +75,7 @@ const UpdateSellerProfile = () => {
                   </div>
                   <div>
                     <div className='msr'>
-                      <h5 className="ms-1">My Restriction</h5>
+                      <h5 className='ms-1'>My Restriction</h5>
                     </div>
 
                     <div className='d-flex'>
@@ -170,7 +171,7 @@ const UpdateSellerProfile = () => {
                   <div className='col-4 video-list'>
                     <div className='row gap-2 '>
                       <TabList>
-                      <Tab className='col video-item shadow-sm'>
+                        <Tab className='col video-item shadow-sm'>
                           <div className='row d-flex justify-content-around  align-items-center shadow-sm'>
                             <div className='small-video col-4 '>
                               <img
@@ -448,6 +449,133 @@ const UpdateSellerProfile = () => {
         <div className='col-12 mt-5'>
           <div className='row g-0'>
             <div className='col-4 shadow-sm  '>
+              <h4>Special Offer</h4>
+              <div className='row gap-1 m-2'>
+                <div className='col-12 shadow-sm'>
+                  <div className='row  p-2 align-items-center text-center'>
+                    <div className='col-12'>
+                      <div className='d-flex justify-content-center'>
+                        <div>
+                          <img
+                            src='/Assets/Img/barger.jpg'
+                            style={{ width: "457px", height: "200px" }}
+                            alt=''
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div className='col-12 text-center'>title sdfsadfs sdf</div>
+                  </div>
+                </div>
+
+                <div className='row gap-0 g-0 '>
+                  <div className='col-12 shadow-sm'>
+                    <div className='row   align-items-center'>
+                      <div className='col-4'>
+                        <div className='d-flex justify-content-center'>
+                          <div>
+                            <img
+                              src='/Assets/Img/barger.jpg'
+                              className='img-fluid'
+                              alt=''
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div className='col-6'>
+                        <p>
+                          Lorem ipsum dolor, sit amet consectetur adipisicing
+                          elit. Quasi, animi.
+                        </p>
+                      </div>
+                      <div className='col-2'>
+                        <div className='d-flex flex-column align-items-center justify-content-between'>
+                          <div>
+                            <h6>200$</h6>
+                          </div>
+                          <div className='d-flex justify-content-center align-items-center'>
+                            <div className='rounded-circle cart-item'>
+                              {" "}
+                              <FaCartPlus className='' size={20} />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className='col-12 shadow-sm'>
+                    <div className='row  p-2 align-items-center'>
+                      <div className='col-2'>
+                        <div className='d-flex flex-column align-items-center justify-content-between'>
+                          <div className='d-flex justify-content-center align-items-center'>
+                            <div className='rounded-circle cart-item '>
+                              {" "}
+                              <FaCartPlus className='' size={20} />
+                            </div>
+                          </div>
+                          <div>
+                            <h6>200$</h6>
+                          </div>
+                        </div>
+                      </div>
+                      <div className='col-6'>
+                        <p>
+                          Lorem ipsum dolor, sit amet consectetur adipisicing
+                          elit. Quasi, animi.
+                        </p>
+                      </div>
+
+                      <div className='col-4'>
+                        <div className='d-flex justify-content-center'>
+                          <div>
+                            <img
+                              src='/Assets/Img/barger.jpg'
+                              className='img-fluid'
+                              alt=''
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className='col-12 shadow-sm'>
+                    <div className='row  p-2 align-items-center'>
+                      <div className='col-4'>
+                        <div className='d-flex justify-content-center'>
+                          <div>
+                            <img
+                              src='/Assets/Img/barger.jpg'
+                              className='img-fluid'
+                              alt=''
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div className='col-6'>
+                        <p>
+                          Lorem ipsum dolor, sit amet consectetur adipisicing
+                          elit. Quasi, animi.
+                        </p>
+                      </div>
+                      <div className='col-2'>
+                        <div className='d-flex flex-column align-items-center justify-content-between'>
+                          <div>
+                            <h6>200$</h6>
+                          </div>
+                          <div className='d-flex justify-content-center align-items-center'>
+                            <div className='rounded-circle cart-item '>
+                              {" "}
+                              <FaCartPlus className='' size={20} />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* <div className='col-4 shadow-sm  '>
               <h4 className='ms-2'>Special Offers</h4>
               <div className='row gap-1 m-2'>
                 <div className='col-12 shadow-sm'>
@@ -554,7 +682,7 @@ const UpdateSellerProfile = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
             <div className='col-4 shadow-sm  '>
               <h4>Instant Food</h4>
               <div className='row gap-1 m-2'>
@@ -660,6 +788,75 @@ const UpdateSellerProfile = () => {
                     </div>
                   </div>
                 </div>
+                <div className='col-12 shadow-sm'>
+                  <div className='row  p-2 align-items-center'>
+                    <div className='col-4'>
+                      <div className='d-flex justify-content-center'>
+                        <div>
+                          <img
+                            src='/Assets/Img/barger.jpg'
+                            className='img-fluid'
+                            alt=''
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div className='col-6'>
+                      <p>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing
+                        elit. Quasi, animi.
+                      </p>
+                    </div>
+                    <div className='col-2'>
+                      <div className='d-flex flex-column align-items-center justify-content-between'>
+                        <div>
+                          <h6>200$</h6>
+                        </div>
+                        <div className='d-flex justify-content-center align-items-center'>
+                          <div className='rounded-circle cart-item '>
+                            {" "}
+                            <FaCartPlus className='' size={20} />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className='col-12 shadow-sm'>
+                  <div className='row  p-2 align-items-center'>
+                    <div className='col-4'>
+                      <div className='d-flex justify-content-center'>
+                        <div>
+                          <img
+                            src='/Assets/Img/barger.jpg'
+                            className='img-fluid'
+                            alt=''
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div className='col-6'>
+                      <p>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing
+                        elit. Quasi, animi.
+                      </p>
+                    </div>
+                    <div className='col-2'>
+                      <div className='d-flex flex-column align-items-center justify-content-between'>
+                        <div>
+                          <h6>200$</h6>
+                        </div>
+                        <div className='d-flex justify-content-center align-items-center'>
+                          <div className='rounded-circle cart-item '>
+                            {" "}
+                            <FaCartPlus className='' size={20} />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
             <div className='col-4 shadow-sm overflow-hidden'>
@@ -676,8 +873,6 @@ const UpdateSellerProfile = () => {
                     <div className='col border text-center'>
                       <h5>Biryani</h5>
                     </div>
-
-
                   </div>
                 </div>
                 <div className='col-11 '>
@@ -691,8 +886,6 @@ const UpdateSellerProfile = () => {
                     <div className='col border text-center'>
                       <h5>Biryani</h5>
                     </div>
-
-
                   </div>
                 </div>
                 <div className='col-11 '>
@@ -706,8 +899,6 @@ const UpdateSellerProfile = () => {
                     <div className='col border text-center'>
                       <h5>Biryani</h5>
                     </div>
-
-
                   </div>
                 </div>
                 <div className='col-11 '>
@@ -721,8 +912,6 @@ const UpdateSellerProfile = () => {
                     <div className='col border text-center'>
                       <h5>Biryani</h5>
                     </div>
-
-
                   </div>
                 </div>
                 <div className='col-11 '>
@@ -736,8 +925,6 @@ const UpdateSellerProfile = () => {
                     <div className='col border text-center'>
                       <h5>Biryani</h5>
                     </div>
-
-
                   </div>
                 </div>
               </div>
@@ -975,6 +1162,504 @@ const UpdateSellerProfile = () => {
             </div>
           </div>
         </div>
+        <div className='col-12 mt-5 '>
+          <div className='row'>
+            <div className='col-4 shadow-sm p-2'>
+              <div className='row comments-section'>
+                <h4 className='m-1 text-uppercase font-monospace'>
+                  User Review
+                </h4>
+                <div className='col-12 '>
+                  <div class='comment'>
+                    <div class='comment-header'>
+                      <img
+                        class='avatar'
+                        src='/Assets/Img/avatar/01.jpg'
+                        alt='User 1'
+                      />
+                      <div class='comment-meta'>
+                        <h3>User 1</h3>
+                        <span class='timestamp'>June 10, 2023</span>
+                      </div>
+                    </div>
+                    <div class='comment-content'>
+                      <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Sed vitae neque vitae sapien cursus pharetra non sit
+                        amet nisi. Sed pellentesque elit in neque auctor, ut
+                        rhoncus nulla dapibus.
+                      </p>
+                    </div>
+                    {/* <div class="comment-actions">
+            <button class="like-button">Like</button>
+            <button class="reply-button">Reply</button>
+        </div> */}
+                  </div>
+
+                  <div class='comment'>
+                    <div class='comment-header'>
+                      <img
+                        class='avatar'
+                        src='/Assets/Img/avatar/02.jpg'
+                        alt='User 2'
+                      />
+                      <div class='comment-meta'>
+                        <h3>User 2</h3>
+                        <span class='timestamp'>June 11, 2023</span>
+                      </div>
+                    </div>
+                    <div class='comment-content'>
+                      <p>Thank you for your comment!</p>
+                    </div>
+                    {/* <div class="comment-actions">
+            <button class="like-button">Like</button>
+            <button class="reply-button">Reply</button>
+        </div> */}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className='col-4 shadow-sm p-2'>
+              <div className='row comments-section'>
+                <h4 className='m-1 text-uppercase font-monospace'>
+                  User Review
+                </h4>
+                <div className='col-12 '>
+                  <div class='comment'>
+                    <div class='comment-header'>
+                      <img
+                        class='avatar'
+                        src='/Assets/Img/avatar/01.jpg'
+                        alt='User 1'
+                      />
+                      <div class='comment-meta'>
+                        <h3>User 1</h3>
+                        <span class='timestamp'>June 10, 2023</span>
+                      </div>
+                    </div>
+                    <div class='comment-content'>
+                      <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Sed vitae neque vitae sapien cursus pharetra non sit
+                        amet nisi. Sed pellentesque elit in neque auctor, ut
+                        rhoncus nulla dapibus.
+                      </p>
+                    </div>
+                    {/* <div class="comment-actions">
+            <button class="like-button">Like</button>
+            <button class="reply-button">Reply</button>
+        </div> */}
+                  </div>
+
+                  <div class='comment'>
+                    <div class='comment-header'>
+                      <img
+                        class='avatar'
+                        src='/Assets/Img/avatar/02.jpg'
+                        alt='User 2'
+                      />
+                      <div class='comment-meta'>
+                        <h3>User 2</h3>
+                        <span class='timestamp'>June 11, 2023</span>
+                      </div>
+                    </div>
+                    <div class='comment-content'>
+                      <p>Thank you for your comment!</p>
+                    </div>
+                    {/* <div class="comment-actions">
+            <button class="like-button">Like</button>
+            <button class="reply-button">Reply</button>
+        </div> */}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className='col-4 shadow-sm  '>
+              <h4> Food Display</h4>
+              <div className='row gap-1 m-2'>
+                <div className='col-12 shadow-sm'>
+                  <div className='row  p-2 align-items-center'>
+                    <div className='col-4'>
+                      <div className='d-flex justify-content-center'>
+                        <div>
+                          <img
+                            src='/Assets/Img/barger.jpg'
+                            className='img-fluid'
+                            alt=''
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div className='col-6'>
+                      <p>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing
+                        elit. Quasi, animi.
+                      </p>
+                    </div>
+                    <div className='col-2'>
+                      <div className='d-flex flex-column align-items-center justify-content-between'>
+                        <div>
+                          <h6>200$</h6>
+                        </div>
+                        <div className='d-flex justify-content-center align-items-center'>
+                          <div className='rounded-circle cart-item '>
+                            {" "}
+                            <FaCartPlus className='' size={20} />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className='col-12 shadow-sm'>
+                  <div className='row  p-2 align-items-center'>
+                    <div className='col-4'>
+                      <div className='d-flex justify-content-center'>
+                        <div>
+                          <img
+                            src='/Assets/Img/barger.jpg'
+                            className='img-fluid'
+                            alt=''
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div className='col-6'>
+                      <p>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing
+                        elit. Quasi, animi.
+                      </p>
+                    </div>
+                    <div className='col-2'>
+                      <div className='d-flex flex-column align-items-center justify-content-between'>
+                        <div>
+                          <h6>200$</h6>
+                        </div>
+                        <div className='d-flex justify-content-center align-items-center'>
+                          <div className='rounded-circle cart-item '>
+                            {" "}
+                            <FaCartPlus className='' size={20} />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className='col-12 shadow-sm'>
+                  <div className='row  p-2 align-items-center'>
+                    <div className='col-4'>
+                      <div className='d-flex justify-content-center'>
+                        <div>
+                          <img
+                            src='/Assets/Img/barger.jpg'
+                            className='img-fluid'
+                            alt=''
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div className='col-6'>
+                      <p>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing
+                        elit. Quasi, animi.
+                      </p>
+                    </div>
+                    <div className='col-2'>
+                      <div className='d-flex flex-column align-items-center justify-content-between'>
+                        <div>
+                          <h6>200$</h6>
+                        </div>
+                        <div className='d-flex justify-content-center align-items-center'>
+                          <div className='rounded-circle cart-item '>
+                            {" "}
+                            <FaCartPlus className='' size={20} />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className='col-12 mt-5'>
+          <div className='row'>
+            <div className='col-4'>
+              <h4>similar Food</h4>
+              <div className='row gap-1 m-2'>
+                <div className='col-12 shadow-sm'>
+                  <div className='row  p-2 align-items-center'>
+                    <div className='col-4'>
+                      <div className='d-flex justify-content-center'>
+                        <div>
+                          <img
+                            src='/Assets/Img/barger.jpg'
+                            className='img-fluid'
+                            alt=''
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div className='col-6'>
+                      <p>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing
+                        elit. Quasi, animi.
+                      </p>
+                    </div>
+                    <div className='col-2'>
+                      <div className='d-flex flex-column align-items-center justify-content-between'>
+                        <div>
+                          <h6>200$</h6>
+                        </div>
+                        <div className='d-flex justify-content-center align-items-center'>
+                          <div className='rounded-circle cart-item '>
+                            {" "}
+                            <FaCartPlus className='' size={20} />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className='col-12 shadow-sm'>
+                  <div className='row  p-2 align-items-center'>
+                    <div className='col-4'>
+                      <div className='d-flex justify-content-center'>
+                        <div>
+                          <img
+                            src='/Assets/Img/barger.jpg'
+                            className='img-fluid'
+                            alt=''
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div className='col-6'>
+                      <p>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing
+                        elit. Quasi, animi.
+                      </p>
+                    </div>
+                    <div className='col-2'>
+                      <div className='d-flex flex-column align-items-center justify-content-between'>
+                        <div>
+                          <h6>200$</h6>
+                        </div>
+                        <div className='d-flex justify-content-center align-items-center'>
+                          <div className='rounded-circle cart-item '>
+                            {" "}
+                            <FaCartPlus className='' size={20} />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className='col-12 shadow-sm'>
+                  <div className='row  p-2 align-items-center'>
+                    <div className='col-4'>
+                      <div className='d-flex justify-content-center'>
+                        <div>
+                          <img
+                            src='/Assets/Img/barger.jpg'
+                            className='img-fluid'
+                            alt=''
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div className='col-6'>
+                      <p>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing
+                        elit. Quasi, animi.
+                      </p>
+                    </div>
+                    <div className='col-2'>
+                      <div className='d-flex flex-column align-items-center justify-content-between'>
+                        <div>
+                          <h6>200$</h6>
+                        </div>
+                        <div className='d-flex justify-content-center align-items-center'>
+                          <div className='rounded-circle cart-item '>
+                            {" "}
+                            <FaCartPlus className='' size={20} />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className='col-4'>
+              <h4>Similar Recipe</h4>
+              <div className='row gap-1 m-2'>
+                <div className='col-12 shadow-sm'>
+                  <div className='row  p-2 align-items-center'>
+                    <div className='col-4'>
+                      <div className='d-flex justify-content-center'>
+                        <div>
+                          <img
+                            src='/Assets/Img/barger.jpg'
+                            className='img-fluid'
+                            alt=''
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div className='col-8'>
+                      <p>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing
+                        elit. Quasi, animi.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className='col-12 shadow-sm'>
+                  <div className='row  p-2 align-items-center'>
+                    <div className='col-4'>
+                      <div className='d-flex justify-content-center'>
+                        <div>
+                          <img
+                            src='/Assets/Img/barger.jpg'
+                            className='img-fluid'
+                            alt=''
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div className='col-8'>
+                      <p>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing
+                        elit. Quasi, animi.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className='col-12 shadow-sm'>
+                  <div className='row  p-2 align-items-center'>
+                    <div className='col-4'>
+                      <div className='d-flex justify-content-center'>
+                        <div>
+                          <img
+                            src='/Assets/Img/barger.jpg'
+                            className='img-fluid'
+                            alt=''
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div className='col-8'>
+                      <p>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing
+                        elit. Quasi, animi.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className='col-4'>
+              <h4>Similar seller</h4>
+              <div className='row gap-2 mt-1'>
+                <div className="col">
+                  <img
+                    src='https://mdbcdn.b-cdn.net/img/new/avatars/8.webp'
+                    class='rounded-circle mb-3'
+                    style={{width: '100px'}}
+                    alt='Avatar'
+                  />
+
+                  <h5 class='mb-2'>
+                    <strong>John Doe</strong>
+                  </h5>
+                  <p class='text-muted'>
+                    kitchen name <span class='badge bg-primary'>PRO</span>
+                  </p>
+                </div>
+                <div className="col">
+                  <img
+                    src='https://mdbcdn.b-cdn.net/img/new/avatars/8.webp'
+                    class='rounded-circle mb-3'
+                    style={{width: '100px'}}
+                    alt='Avatar'
+                  />
+
+                  <h5 class='mb-2'>
+                    <strong>John Doe</strong>
+                  </h5>
+                  <p class='text-muted'>
+                    kitchen name <span class='badge bg-primary'>PRO</span>
+                  </p>
+                </div>
+                <div className="col">
+                  <img
+                    src='https://mdbcdn.b-cdn.net/img/new/avatars/8.webp'
+                    class='rounded-circle mb-3'
+                    style={{width: '100px'}}
+                    alt='Avatar'
+                  />
+
+                  <h5 class='mb-2'>
+                    <strong>John Doe</strong>
+                  </h5>
+                  <p class='text-muted'>
+                    kitchen name <span class='badge bg-primary'>PRO</span>
+                  </p>
+                </div>
+                <div className="col">
+                  <img
+                    src='https://mdbcdn.b-cdn.net/img/new/avatars/8.webp'
+                    class='rounded-circle mb-3'
+                    style={{width: '100px'}}
+                    alt='Avatar'
+                  />
+
+                  <h5 class='mb-2'>
+                    <strong>John Doe</strong>
+                  </h5>
+                  <p class='text-muted'>
+                    kitchen name <span class='badge bg-primary'>PRO</span>
+                  </p>
+                </div>
+                <div className="col">
+                  <img
+                    src='https://mdbcdn.b-cdn.net/img/new/avatars/8.webp'
+                    class='rounded-circle mb-3'
+                    style={{width: '100px'}}
+                    alt='Avatar'
+                  />
+
+                  <h5 class='mb-2'>
+                    <strong>John Doe</strong>
+                  </h5>
+                  <p class='text-muted'>
+                    kitchen name <span class='badge bg-primary'>PRO</span>
+                  </p>
+                </div>
+                <div className="col">
+                  <img
+                    src='https://mdbcdn.b-cdn.net/img/new/avatars/8.webp'
+                    class='rounded-circle mb-3'
+                    style={{width: '100px'}}
+                    alt='Avatar'
+                  />
+
+                  <h5 class='mb-2'>
+                    <strong>John Doe</strong>
+                  </h5>
+                  <p class='text-muted'>
+                    kitchen name <span class='badge bg-primary'>PRO</span>
+                  </p>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <ProfileFoodGallery />
         {/* <div className='col-12 mt-5 third-section'>
           <div className='row '>
             <div className='col-4 shadow-sm'>
